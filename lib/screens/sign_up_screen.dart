@@ -7,8 +7,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:growth_tree_app/utils/colors.dart';
 
-class LoginScreen extends HookConsumerWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignUpScreen extends HookConsumerWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
