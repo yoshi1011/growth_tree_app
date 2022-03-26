@@ -12,8 +12,6 @@ class LoginScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final firstNameController = TextEditingController();
-    final lastNameController = TextEditingController();
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
 
