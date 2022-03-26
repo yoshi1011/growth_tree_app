@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/screens/sign_up_screen.dart';
+import 'package:growth_tree_app/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'growth tree',
-      home: SignUpScreen(),
+      home: LoginScreen(),
     );
   }
 }
