@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/screens/sent_register_mail_screen.dart';
+import 'package:growth_tree_app/screens/curriculum/curriculums_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'growth tree',
-      home: SentRegisterMailScreen(),
+      home: CurriculumsScreen(),
     );
   }
 }
