@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:growth_tree_app/widgets/frame/side_menu_tile.dart';
+import 'package:growth_tree_app/widgets/side_menu/side_menu_tile.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SideMenuWidget extends StatefulHookConsumerWidget {
