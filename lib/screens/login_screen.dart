@@ -6,15 +6,28 @@ import 'package:growth_tree_app/widgets/text/xs_text.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:growth_tree_app/utils/colors.dart';
+import '../providers/user_provider.dart';
 
-class LoginScreen extends HookConsumerWidget {
+class LoginScreen extends StatefulHookConsumerWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final emailController = TextEditingController();
-    final passwordController = TextEditingController();
+  LoginScreenState createState() => LoginScreenState();
+}
 
+class LoginScreenState extends ConsumerState<LoginScreen> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  void loginUser() async {
+    int res = await ref
+        .read(userProvider.notifier)
+        .login(emailController.text, passwordController.text);
+    print(res);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return AuthPageFrame(
       title: 'ログイン',
       body: Column(
@@ -69,18 +82,20 @@ class LoginScreen extends HookConsumerWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(children: [
-                  Checkbox(
-                    value: true,
-                    onChanged: null,
-                    fillColor:
-                    MaterialStateProperty.all(GrowthTreeColors.themeColor),
-                  ),
-                  const XsText(
-                    'ログインしたままにする',
-                    fontColor: GrowthTreeColors.themeColor,
-                  ),
-                ],),
+                Row(
+                  children: [
+                    Checkbox(
+                      value: true,
+                      onChanged: null,
+                      fillColor: MaterialStateProperty.all(
+                          GrowthTreeColors.themeColor),
+                    ),
+                    const XsText(
+                      'ログインしたままにする',
+                      fontColor: GrowthTreeColors.themeColor,
+                    ),
+                  ],
+                ),
                 InkWell(
                   onTap: () {},
                   child: Text(
@@ -100,7 +115,7 @@ class LoginScreen extends HookConsumerWidget {
           ),
           // 続けるボタン
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () => loginUser(),
             child: const Text(
               'ログイン',
               style: TextStyle(fontSize: 16),
