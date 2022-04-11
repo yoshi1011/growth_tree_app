@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:growth_tree_app/screens/curriculum/curriculums_body.dart';
 import 'package:growth_tree_app/widgets/header/header_widget.dart';
 import 'package:growth_tree_app/widgets/notification_bar/notification_bar_widget.dart';
 import 'package:growth_tree_app/widgets/side_menu/side_menu_widget.dart';
@@ -12,6 +13,7 @@ class CurriculumsScreen extends StatelessWidget {
       appBar: HeaderWidget(),
       drawer: SideMenuWidget(),
       endDrawer: NotificationBarWidget(),
+      body: CurriculumsBody(),
     );
   }
 }

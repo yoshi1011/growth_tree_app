@@ -5,9 +5,12 @@ import '../../utils/colors.dart';
 class SText extends StatelessWidget {
   final String text;
   final Color fontColor;
+  final FontWeight fontWeight;
 
   const SText(this.text,
-      {Key? key, this.fontColor = GrowthTreeColors.darkGray})
+      {Key? key,
+      this.fontColor = GrowthTreeColors.darkGray,
+      this.fontWeight = FontWeight.bold})
       : super(key: key);
 
   @override
@@ -17,7 +20,7 @@ class SText extends StatelessWidget {
       style: TextStyle(
         color: fontColor,
         fontSize: 14,
-        fontWeight: FontWeight.bold,
+        fontWeight: fontWeight,
       ),
     );
   }
