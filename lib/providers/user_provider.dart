@@ -1,21 +1,42 @@
-import 'dart:convert';
-
+import 'package:growth_tree_app/utils/constants.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class UserNotifier extends StateNotifier<Map> {
-  UserNotifier(): super({'aaaa': 'aaaaaa'});
+import '../models/user.dart';
 
-  Future<int> login(String email, String password) async {
-    var uri = Uri.parse('http://localhost:3000/auth/sign_in');
-    var response =
-        await http.post(uri, body: {'email': email, 'password': password});
-    var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
-    state = decodedResponse['data'] as Map;
-    return 200;
+// ログイン認証を動かすために作成。くちゃくちゃなので直す
+class UserState extends StateNotifier<User> {
+  UserState() : super(User());
+
+  Future<void> saveSessionData(Headers result) async {
+    var storage = const FlutterSecureStorage();
+
+    // flutter_secure_storageを使いauth情報を保存
+    // TODO: 導入は簡単だがセキュリティに問題を抱えた実装のため、set-cookie取得形式の実装を検討
+    await storage.write(
+        key: Constant.accessToken, value: result['access-token']![0]);
+    await storage.write(key: Constant.client, value: result['client']![0]);
+    await storage.write(key: Constant.expiry, value: result['expiry']![0]);
+    await storage.write(key: Constant.uid, value: result['uid']![0]);
+
+    state = state.copyWith(accessToken: result['access-token']![0]);
+  }
+
+  Future<void> deleteSessionData() async {
+    var storage = const FlutterSecureStorage();
+
+    storage.deleteAll();
+  }
+
+  Future<void> readSessionData() async {
+    var storage = const FlutterSecureStorage();
+    
+    final accessToken = await storage.read(key: Constant.accessToken);
+    state = state.copyWith(accessToken: accessToken);
   }
 }
 
-final userProvider = StateNotifierProvider<UserNotifier, Map>((ref) {
-  return UserNotifier();
+final userProvider = StateNotifierProvider<UserState, User>((ref) {
+  return UserState();
 });
