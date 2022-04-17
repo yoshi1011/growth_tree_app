@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:growth_tree_app/models/table_items/table_item.dart';
 import 'package:growth_tree_app/utils/colors.dart';
 import 'package:growth_tree_app/widgets/avatar/active_user_avatar.dart';
+import 'package:growth_tree_app/widgets/frame/base_frame.dart';
 import 'package:growth_tree_app/widgets/text/s_text.dart';
 import 'package:growth_tree_app/widgets/text/title_text.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -26,32 +27,16 @@ class ListPageFrame extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Center(
-      child: Container(
-        width: 864,
-        child: Column(
-          children: [
-            SizedBox(
-              height: 40,
-            ),
-            Container(
-              alignment: Alignment.topLeft,
-              child: TitleText(title),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Table(
-              columnWidths: _setColumnWidths(columnWidths),
-              children: <TableRow>[
-                _buildHeaderColumns(
-                  columnNames,
-                ),
-                ..._buildDataRows(dataList)
-              ],
-            ),
-          ],
-        ),
+    return BaseFrame(
+      title: title,
+      contentWidget: Table(
+        columnWidths: _setColumnWidths(columnWidths),
+        children: <TableRow>[
+          _buildHeaderColumns(
+            columnNames,
+          ),
+          ..._buildDataRows(dataList)
+        ],
       ),
     );
   }
