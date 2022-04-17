@@ -57,13 +57,21 @@ class ListPageFrame extends HookConsumerWidget {
   }
 
   Map<int, FlexColumnWidth> _setColumnWidths(List<num> columnWidths) {
-    return columnWidths
+    // 最右にドットメニューを追加するため一列分を追加
+    // NOTE: 一列分追加が見えにくくなっているため、リファクタリングの必要性があるかも
+    List<num> addedColumnWidths = [...columnWidths, 1];
+
+    return addedColumnWidths
         .asMap()
         .map((key, value) => MapEntry(key, FlexColumnWidth(value.toDouble())));
   }
 
   TableRow _buildHeaderColumns(List<String> columnNames) {
-    final headerColumns = columnNames.map((columnName) {
+    // 最右にドットメニューを追加するため一列分を追加
+    // NOTE: 一列分追加が見えにくくなっているため、リファクタリングの必要性があるかも
+    List<String> addedColumnNames = [...columnNames, ''];
+
+    final headerColumns = addedColumnNames.map((columnName) {
       return Container(
         height: 30,
         alignment: Alignment.center,
@@ -93,7 +101,17 @@ class ListPageFrame extends HookConsumerWidget {
   }
 
   TableRow _buildDataColumns(CurriculumItem item) {
-    final dataColumns = item.toList().map((data) {
+    final listItem = [
+      ...item.toList(),
+      IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.more_vert,
+            color: GrowthTreeColors.darkGray,
+          ))
+    ];
+
+    final dataColumns = listItem.map((data) {
       late final child;
 
       // データの型に応じてWidgetを変更する
@@ -120,6 +138,8 @@ class ListPageFrame extends HookConsumerWidget {
                   ),
                 )).toList(),
         );
+      } else {
+        child = data;
       }
 
       return Container(
