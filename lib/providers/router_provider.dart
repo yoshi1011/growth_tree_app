@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:growth_tree_app/providers/user_provider.dart';
-import 'package:growth_tree_app/screens/curriculum/curriculums_screen.dart';
+import 'package:growth_tree_app/screens/curriculums_screen.dart';
 import 'package:growth_tree_app/screens/forgot_password_screen.dart';
 import 'package:growth_tree_app/screens/login_screen.dart';
 import 'package:growth_tree_app/screens/sent_password_reset_mail_screen.dart';
