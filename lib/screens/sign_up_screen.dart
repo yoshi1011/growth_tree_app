@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:growth_tree_app/widgets/form/google_login_button.dart';
 import 'package:growth_tree_app/widgets/form/outlined_text_field.dart';
 import 'package:growth_tree_app/widgets/frame/auth_page_frame.dart';
@@ -112,7 +113,7 @@ class SignUpScreen extends HookConsumerWidget {
                 width: 10,
               ),
               InkWell(
-                onTap: () {},
+                onTap: () => context.go('/login'),
                 child: Text(
                   'ログイン',
                   style: TextStyle(
