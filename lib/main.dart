@@ -37,6 +37,3 @@ class MyAppState extends ConsumerState<MyApp> {
     );
   }
 }
-
-
-
