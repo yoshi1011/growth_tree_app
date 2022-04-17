@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/models/table_items/curriculum_item.dart';
+import 'package:growth_tree_app/models/table_items/table_item.dart';
 import 'package:growth_tree_app/utils/colors.dart';
 import 'package:growth_tree_app/widgets/avatar/active_user_avatar.dart';
 import 'package:growth_tree_app/widgets/text/s_text.dart';
@@ -14,7 +14,7 @@ class ListPageFrame extends HookConsumerWidget {
   final String title;
   final List<String> columnNames;
   final List<num> columnWidths;
-  final List<CurriculumItem> dataList;
+  final List<TableItem> dataList;
 
   const ListPageFrame(
       {Key? key,
@@ -92,7 +92,7 @@ class ListPageFrame extends HookConsumerWidget {
     );
   }
 
-  List<TableRow> _buildDataRows(List<CurriculumItem> dataList) {
+  List<TableRow> _buildDataRows(List<TableItem> dataList) {
     final dataRows = dataList.map((data) {
       return _buildDataColumns(data);
     }).toList();
@@ -100,7 +100,7 @@ class ListPageFrame extends HookConsumerWidget {
     return dataRows;
   }
 
-  TableRow _buildDataColumns(CurriculumItem item) {
+  TableRow _buildDataColumns(TableItem item) {
     final listItem = [
       ...item.toList(),
       IconButton(

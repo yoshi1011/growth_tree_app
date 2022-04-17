@@ -13,6 +13,7 @@ import 'package:growth_tree_app/utils/utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../models/user.dart';
+import '../screens/missions_screen.dart';
 
 const loggedInPaths = ['/', '/curriculums'];
 const loggedOutPaths = [
@@ -47,6 +48,8 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(path: '/', builder: (context, state) => const WorkspaceScreen()),
       GoRoute(path: '/curriculums',
           builder: (context, state) => const CurriculumsScreen()),
+      GoRoute(path: '/missions',
+          builder: (context, state) => const MissionsScreen()),
       GoRoute(path: '/login', builder: (context, state) => const LoginScreen()),
       GoRoute(
           path: '/forgot_password',
