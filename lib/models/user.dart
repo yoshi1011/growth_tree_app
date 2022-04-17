@@ -7,7 +7,8 @@ part 'user.freezed.dart';
 @freezed
 class User with _$User {
   factory User({
-    String? accessToken
+    String? accessToken,
+    String? imageUrl
   }) = _User;
 
   User._();

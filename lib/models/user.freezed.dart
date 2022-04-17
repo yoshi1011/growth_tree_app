@@ -18,9 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$UserTearOff {
   const _$UserTearOff();
 
-  _User call({String? accessToken}) {
+  _User call({String? accessToken, String? imageUrl}) {
     return _User(
       accessToken: accessToken,
+      imageUrl: imageUrl,
     );
   }
 }
@@ -31,6 +32,7 @@ const $User = _$UserTearOff();
 /// @nodoc
 mixin _$User {
   String? get accessToken => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
@@ -40,7 +42,7 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({String? accessToken});
+  $Res call({String? accessToken, String? imageUrl});
 }
 
 /// @nodoc
@@ -54,11 +56,16 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call({
     Object? accessToken = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
       accessToken: accessToken == freezed
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -69,7 +76,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
   @override
-  $Res call({String? accessToken});
+  $Res call({String? accessToken, String? imageUrl});
 }
 
 /// @nodoc
@@ -84,11 +91,16 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   @override
   $Res call({
     Object? accessToken = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_User(
       accessToken: accessToken == freezed
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -97,14 +109,16 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_User extends _User with DiagnosticableTreeMixin {
-  _$_User({this.accessToken}) : super._();
+  _$_User({this.accessToken, this.imageUrl}) : super._();
 
   @override
   final String? accessToken;
+  @override
+  final String? imageUrl;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(accessToken: $accessToken)';
+    return 'User(accessToken: $accessToken, imageUrl: $imageUrl)';
   }
 
   @override
@@ -112,7 +126,8 @@ class _$_User extends _User with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'User'))
-      ..add(DiagnosticsProperty('accessToken', accessToken));
+      ..add(DiagnosticsProperty('accessToken', accessToken))
+      ..add(DiagnosticsProperty('imageUrl', imageUrl));
   }
 
   @override
@@ -121,12 +136,15 @@ class _$_User extends _User with DiagnosticableTreeMixin {
         (other.runtimeType == runtimeType &&
             other is _User &&
             const DeepCollectionEquality()
-                .equals(other.accessToken, accessToken));
+                .equals(other.accessToken, accessToken) &&
+            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(accessToken));
+      runtimeType,
+      const DeepCollectionEquality().hash(accessToken),
+      const DeepCollectionEquality().hash(imageUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -135,11 +153,13 @@ class _$_User extends _User with DiagnosticableTreeMixin {
 }
 
 abstract class _User extends User {
-  factory _User({String? accessToken}) = _$_User;
+  factory _User({String? accessToken, String? imageUrl}) = _$_User;
   _User._() : super._();
 
   @override
   String? get accessToken;
+  @override
+  String? get imageUrl;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;
