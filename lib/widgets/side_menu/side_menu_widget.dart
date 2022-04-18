@@ -42,7 +42,7 @@ class SideMenuWidgetState extends ConsumerState<SideMenuWidget> {
           ),
           const SideMenuTile('ダッシュボード', iconData: Icons.home, pathName: '/',),
           const SideMenuTile('カリキュラム', iconData: Icons.calendar_month, pathName: '/curriculums',),
-          const SideMenuTile('ミッション', iconData: Icons.assignment_late_outlined, pathName: '/'),
+          const SideMenuTile('ミッション', iconData: Icons.assignment_late_outlined, pathName: '/missions'),
           const SideMenuTile('スキル', iconData: Icons.psychology, pathName: '/'),
           const SideMenuTile('メンバー', iconData: Icons.groups, pathName: '/'),
           const SideMenuTile('アカウント', iconData: Icons.person, pathName: '/'),

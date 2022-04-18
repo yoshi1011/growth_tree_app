@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../../utils/colors.dart';
 
-class XsText extends StatelessWidget {
+class MText extends StatelessWidget {
   final String text;
   final Color fontColor;
   final FontWeight fontWeight;
-  final TextOverflow overflow;
 
-  const XsText(this.text,
+  const MText(this.text,
       {Key? key,
       this.fontColor = GrowthTreeColors.darkGray,
-      this.fontWeight = FontWeight.bold,
-      this.overflow = TextOverflow.ellipsis})
+      this.fontWeight = FontWeight.bold})
       : super(key: key);
 
   @override
@@ -21,9 +19,8 @@ class XsText extends StatelessWidget {
       text,
       style: TextStyle(
         color: fontColor,
-        fontSize: 10,
+        fontSize: 16,
         fontWeight: fontWeight,
-        overflow: overflow
       ),
     );
   }
