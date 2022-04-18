@@ -38,7 +38,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         return '/login';
       }
       if (isLoggedIn && goToLoggedOutPages) {
-        return '/curriculums';
+        return '/';
       }
 
       return null;

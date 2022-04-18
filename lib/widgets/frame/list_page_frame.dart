@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:growth_tree_app/models/table_items/table_item.dart';
 import 'package:growth_tree_app/utils/colors.dart';
-import 'package:growth_tree_app/widgets/avatar/active_user_avatar.dart';
+import 'package:growth_tree_app/widgets/avatar/user_avatar.dart';
 import 'package:growth_tree_app/widgets/frame/base_frame.dart';
 import 'package:growth_tree_app/widgets/text/s_text.dart';
-import 'package:growth_tree_app/widgets/text/title_text.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../models/skill.dart';
@@ -107,11 +106,11 @@ class ListPageFrame extends HookConsumerWidget {
           fontWeight: FontWeight.normal,
         );
       } else if (data is List<User>) {
-        // UserのimageUrlからActiveUserAvatarのリストを作成する
-        final avatarList = data.map((d) => ActiveUserAvatar(imageUrl: d.imageUrl as String)).toList();
+        // UserのimageUrlからUserAvatarのリストを作成する
+        final avatarList = data.map((d) => UserAvatar(imageUrl: d.imageUrl as String)).toList();
 
         // 作成したAvatarからAvatarStackを作成する
-        child = ActiveUserAvatarList(avatarList: avatarList);
+        child = UserAvatarList(avatarList: avatarList);
       } else if (data is List<Skill>) {
         // Containerの子Widgetにするため、Rowでラップする
         child = Row(
