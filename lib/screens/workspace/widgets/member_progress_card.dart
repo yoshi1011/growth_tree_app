@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:growth_tree_app/utils/colors.dart';
+import 'package:growth_tree_app/widgets/avatar/user_avatar.dart';
 import 'package:growth_tree_app/widgets/chip/unread_chip.dart';
 import 'package:growth_tree_app/widgets/progress_bar/progress_bar.dart';
 import 'package:growth_tree_app/widgets/text/m_text.dart';
+import 'package:growth_tree_app/widgets/text/s_text.dart';
+import 'package:growth_tree_app/widgets/text/xs_text.dart';
 import 'package:intl/intl.dart';
-
-import '../../utils/colors.dart';
-import '../avatar/user_avatar.dart';
-import '../text/s_text.dart';
-import '../text/xs_text.dart';
 
 class MemberProgressCard extends StatelessWidget {
   // モデルを実装するまでの仮実装
