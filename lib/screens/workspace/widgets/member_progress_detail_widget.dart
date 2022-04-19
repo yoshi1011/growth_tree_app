@@ -117,6 +117,7 @@ class MemberProgressDetailWidget extends StatelessWidget {
               ],
             ),
           ),
+          // 新着・要チェックコンテナ
           Container(
             child: Column(
               children: [
@@ -143,6 +144,34 @@ class MemberProgressDetailWidget extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 2, horizontal: 6),
                   child: ListView.builder(
                     itemCount: 3,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        padding: const EdgeInsets.symmetric(vertical: 4),
+                        child: MemberProgressItemWidget(),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // 既読コンテナ
+          Container(
+            child: Column(
+              children: [
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: const SText(
+                    '既読',
+                    fontColor: GrowthTreeColors.themeColor,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+                Container(
+                  height: 60 * 3,
+                  padding: EdgeInsets.symmetric(vertical: 2, horizontal: 6),
+                  child: ListView.builder(
+                    itemCount: 5,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                         padding: const EdgeInsets.symmetric(vertical: 4),
