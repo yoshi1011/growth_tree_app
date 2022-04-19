@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:growth_tree_app/screens/workspace/widgets/workspace_dialog.dart';
 import 'package:growth_tree_app/utils/colors.dart';
 import 'package:growth_tree_app/widgets/chip/unread_chip.dart';
 import 'package:growth_tree_app/widgets/text/s_text.dart';
@@ -10,7 +11,14 @@ class MemberProgressItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return WorkspaceDialog();
+          },
+        );
+      },
       child: Container(
         width: 530,
         height: 50,

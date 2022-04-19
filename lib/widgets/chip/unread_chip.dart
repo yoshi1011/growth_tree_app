@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:growth_tree_app/utils/colors.dart';
 import 'package:growth_tree_app/widgets/text/xs_text.dart';
 
 class UnreadChip extends StatelessWidget {
@@ -12,7 +13,7 @@ class UnreadChip extends StatelessWidget {
         fontColor: Colors.white,
         fontWeight: FontWeight.normal,
       ),
-      backgroundColor: Color(0xFFFF0000),
+      backgroundColor: GrowthTreeColors.red,
     );
   }
 }
