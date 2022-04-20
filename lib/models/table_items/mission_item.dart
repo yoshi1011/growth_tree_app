@@ -1,5 +1,5 @@
+// Project imports:
 import 'package:growth_tree_app/models/table_items/table_item.dart';
-
 import '../skill.dart';
 
 class MissionItem implements TableItem {
