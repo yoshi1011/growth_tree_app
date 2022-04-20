@@ -33,6 +33,5 @@ class TaskStatusChip extends StatelessWidget {
       ),
       backgroundColor: themeColor,
     );
-    ;
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:growth_tree_app/utils/colors.dart';
+import 'package:growth_tree_app/widgets/avatar/user_avatar.dart';
 import 'package:growth_tree_app/widgets/button/button.dart';
 import 'package:growth_tree_app/widgets/card/file_card.dart';
 import 'package:growth_tree_app/widgets/chip/task_status_chip.dart';
@@ -7,6 +8,7 @@ import 'package:growth_tree_app/widgets/form/outlined_text_area.dart';
 import 'package:growth_tree_app/widgets/icon/task_type_icon.dart';
 import 'package:growth_tree_app/widgets/text/l_text.dart';
 import 'package:growth_tree_app/widgets/text/s_text.dart';
+import 'package:growth_tree_app/widgets/text/xs_text.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -113,6 +115,106 @@ class WorkspaceDialog extends HookConsumerWidget {
                           ),
                         ],
                       ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const LText(
+                        'Activity',
+                        fontColor: GrowthTreeColors.black,
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          UserAvatar(
+                            imageUrl:
+                                'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80',
+                          ),
+                          Container(
+                            width: 480,
+                            height: 90,
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 1,
+                                  offset: const Offset(0, 1),
+                                  color:
+                                      const Color(0x00000000).withOpacity(0.25),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SText(
+                                  'チェリー本を見ながらRubyコードを書きました。採点のほどよろしくお願いいたします。',
+                                  fontColor: GrowthTreeColors.black,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.insert_drive_file_outlined,
+                                            size: 20,
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          XsText(
+                                            'main.rb',
+                                            fontColor: GrowthTreeColors.black,
+                                            fontWeight: FontWeight.normal,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          XsText('2022年4月1日'),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Stack(
+                                            alignment: const Alignment(0, 0),
+                                            children: [
+                                              Container(
+                                                width: 48,
+                                                height: 20,
+                                                decoration: BoxDecoration(
+                                                  color:
+                                                      GrowthTreeColors.yellow,
+                                                  borderRadius:
+                                                      BorderRadius.circular(50),
+                                                ),
+                                              ),
+                                              XsText(
+                                                '提出',
+                                                fontColor: Colors.white,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 ),
