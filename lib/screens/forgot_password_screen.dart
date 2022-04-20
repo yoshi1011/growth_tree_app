@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/widgets/form/google_login_button.dart';
-import 'package:growth_tree_app/widgets/form/outlined_text_field.dart';
-import 'package:growth_tree_app/widgets/frame/auth_page_frame.dart';
-import 'package:growth_tree_app/widgets/text/xs_text.dart';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:growth_tree_app/utils/colors.dart';
+import '../utils/colors.dart';
+import '../widgets/form/outlined_text_field.dart';
+import '../widgets/frame/auth_page_frame.dart';
+import '../widgets/text/xs_text.dart';
 
 class ForgotPasswordScreen extends HookConsumerWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);
@@ -24,7 +24,9 @@ class ForgotPasswordScreen extends HookConsumerWidget {
               '登録しているメールアドレスを入力してください。\nメールアドレス宛にパスワード変更ページのURLが記載されたメールを送信します。',
             ),
           ),
-          const SizedBox(height: 15,),
+          const SizedBox(
+            height: 15,
+          ),
           // Form
           Container(
             margin: const EdgeInsets.symmetric(vertical: 15),

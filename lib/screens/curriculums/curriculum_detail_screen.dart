@@ -1,22 +1,20 @@
-// Flutter imports:
 import 'package:flutter/material.dart';
 
-// Project imports:
-import 'package:growth_tree_app/models/skill.dart';
-import 'package:growth_tree_app/models/table_items/member_item.dart';
-import 'package:growth_tree_app/models/table_items/mission_item.dart';
-import 'package:growth_tree_app/models/table_items/table_item.dart';
-import 'package:growth_tree_app/models/user.dart';
-import 'package:growth_tree_app/utils/colors.dart';
-import 'package:growth_tree_app/utils/constants.dart';
-import 'package:growth_tree_app/widgets/avatar/user_avatar.dart';
-import 'package:growth_tree_app/widgets/chip/skill_chip.dart';
-import 'package:growth_tree_app/widgets/frame/base_frame.dart';
-import 'package:growth_tree_app/widgets/header/header_widget.dart';
-import 'package:growth_tree_app/widgets/notification_bar/notification_bar_widget.dart';
-import 'package:growth_tree_app/widgets/side_menu/side_menu_widget.dart';
-import 'package:growth_tree_app/widgets/text/l_text.dart';
-import 'package:growth_tree_app/widgets/text/s_text.dart';
+import '../../models/skill.dart';
+import '../../models/table_items/member_item.dart';
+import '../../models/table_items/mission_item.dart';
+import '../../models/table_items/table_item.dart';
+import '../../models/user.dart';
+import '../../utils/colors.dart';
+import '../../utils/constants.dart';
+import '../../widgets/avatar/user_avatar.dart';
+import '../../widgets/chip/skill_chip.dart';
+import '../../widgets/frame/base_frame.dart';
+import '../../widgets/header/header_widget.dart';
+import '../../widgets/notification_bar/notification_bar_widget.dart';
+import '../../widgets/side_menu/side_menu_widget.dart';
+import '../../widgets/text/l_text.dart';
+import '../../widgets/text/s_text.dart';
 
 class CurriculumDetailScreen extends StatefulWidget {
   const CurriculumDetailScreen({Key? key}) : super(key: key);

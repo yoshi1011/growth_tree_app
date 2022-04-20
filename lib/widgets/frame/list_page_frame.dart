@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/models/table_items/table_item.dart';
-import 'package:growth_tree_app/utils/colors.dart';
-import 'package:growth_tree_app/widgets/avatar/user_avatar.dart';
-import 'package:growth_tree_app/widgets/frame/base_frame.dart';
-import 'package:growth_tree_app/widgets/text/s_text.dart';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../models/table_items/table_item.dart';
+import '../../utils/colors.dart';
+import '../avatar/user_avatar.dart';
+import 'base_frame.dart';
+import '../text/s_text.dart';
 import '../../models/skill.dart';
 import '../../models/user.dart';
 import '../chip/skill_chip.dart';
@@ -107,30 +108,30 @@ class ListPageFrame extends HookConsumerWidget {
         );
       } else if (data is List<User>) {
         // UserのimageUrlからUserAvatarのリストを作成する
-        final avatarList = data.map((d) => UserAvatar(imageUrl: d.imageUrl as String)).toList();
+        final avatarList = data
+            .map((d) => UserAvatar(imageUrl: d.imageUrl as String))
+            .toList();
 
         // 作成したAvatarからAvatarStackを作成する
         child = UserAvatarList(avatarList: avatarList);
       } else if (data is List<Skill>) {
         // Containerの子Widgetにするため、Rowでラップする
         child = Row(
-          children: data.map((d) => Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
-                  child: SkillChip(
-                    name: d.name,
-                    themeColor: d.themeColor,
-                  ),
-                )).toList(),
+          children: data
+              .map((d) => Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    child: SkillChip(
+                      name: d.name,
+                      themeColor: d.themeColor,
+                    ),
+                  ))
+              .toList(),
         );
       } else {
         child = data;
       }
 
-      return Container(
-        height: 40,
-        alignment: Alignment.center,
-        child: child
-      );
+      return Container(height: 40, alignment: Alignment.center, child: child);
     }).toList();
 
     return TableRow(

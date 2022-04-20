@@ -1,5 +1,4 @@
-// Project imports:
-import 'package:growth_tree_app/models/table_items/table_item.dart';
+import 'table_item.dart';
 
 class MemberItem implements TableItem {
   final String name;

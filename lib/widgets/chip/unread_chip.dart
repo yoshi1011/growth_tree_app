@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/utils/colors.dart';
-import 'package:growth_tree_app/widgets/text/xs_text.dart';
+
+import '../../utils/colors.dart';
+import '../text/xs_text.dart';
 
 class UnreadChip extends StatelessWidget {
   const UnreadChip({Key? key}) : super(key: key);

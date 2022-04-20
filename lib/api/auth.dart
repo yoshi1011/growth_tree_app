@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:growth_tree_app/providers/user_provider.dart';
+
+import '../providers/user_provider.dart';
 
 class Auth {
-  static Future<String> login(WidgetRef ref, String email, String password) async {
+  static Future<String> login(
+      WidgetRef ref, String email, String password) async {
     var dio = Dio(BaseOptions(baseUrl: 'http://localhost:3000'));
 
     if (email.isNotEmpty & password.isNotEmpty) {

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
-import 'package:growth_tree_app/providers/router_provider.dart';
-import 'package:growth_tree_app/providers/user_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import 'providers/router_provider.dart';
+import 'providers/user_provider.dart';
 
 void main() {
   GoRouter.setUrlPathStrategy(UrlPathStrategy.path);
@@ -17,7 +19,6 @@ class MyApp extends StatefulHookConsumerWidget {
 }
 
 class MyAppState extends ConsumerState<MyApp> {
-
   @override
   void initState() {
     super.initState();

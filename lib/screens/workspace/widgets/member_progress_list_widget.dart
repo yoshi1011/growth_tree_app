@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/utils/colors.dart';
-import 'package:growth_tree_app/widgets/text/s_text.dart';
 
+import '../../../utils/colors.dart';
+import '../../../widgets/text/s_text.dart';
 import 'member_progress_card.dart';
 
 class MemberProgressListWidget extends StatelessWidget {

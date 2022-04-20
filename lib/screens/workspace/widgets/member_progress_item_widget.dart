@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/screens/workspace/widgets/workspace_dialog.dart';
-import 'package:growth_tree_app/utils/colors.dart';
-import 'package:growth_tree_app/widgets/chip/unread_chip.dart';
-import 'package:growth_tree_app/widgets/text/s_text.dart';
-import 'package:growth_tree_app/widgets/text/xs_text.dart';
+
+import 'workspace_dialog.dart';
+import '../../../utils/colors.dart';
+import '../../../widgets/chip/unread_chip.dart';
+import '../../../widgets/text/s_text.dart';
+import '../../../widgets/text/xs_text.dart';
 
 class MemberProgressItemWidget extends StatelessWidget {
   const MemberProgressItemWidget({Key? key}) : super(key: key);

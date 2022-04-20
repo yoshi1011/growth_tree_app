@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/colors.dart';
@@ -24,7 +25,7 @@ class GoogleLoginButton extends StatelessWidget {
             width: 10,
           ),
           Text(
-            isSignUp ? 'Continue with Google': 'Sign in with Google',
+            isSignUp ? 'Continue with Google' : 'Sign in with Google',
             style: TextStyle(
                 color: GrowthTreeColors.darkGray,
                 fontSize: 16,
@@ -34,8 +35,7 @@ class GoogleLoginButton extends StatelessWidget {
       ),
       style: OutlinedButton.styleFrom(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        side: const BorderSide(
-            width: 1, color: GrowthTreeColors.darkGray),
+        side: const BorderSide(width: 1, color: GrowthTreeColors.darkGray),
       ),
     );
   }

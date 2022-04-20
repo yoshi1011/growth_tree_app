@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/widgets/icon/file_download_icon.dart';
-import 'package:growth_tree_app/widgets/text/xs_text.dart';
+
+import '../icon/file_download_icon.dart';
+import '../text/xs_text.dart';
 
 class FileCard extends StatefulWidget {
   final String name;

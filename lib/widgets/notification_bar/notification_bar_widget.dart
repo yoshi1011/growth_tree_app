@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/utils/colors.dart';
-import 'package:growth_tree_app/widgets/notification_bar/notification_card.dart';
-import 'package:growth_tree_app/widgets/text/title_text.dart';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../utils/colors.dart';
+import 'notification_card.dart';
+import '../text/title_text.dart';
 import '../text/s_text.dart';
 
 class NotificationBarWidget extends StatefulHookConsumerWidget {

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/utils/colors.dart';
-import 'package:growth_tree_app/widgets/avatar/user_avatar.dart';
-import 'package:growth_tree_app/widgets/progress_bar/progress_bar.dart';
-import 'package:growth_tree_app/widgets/text/l_text.dart';
-import 'package:growth_tree_app/widgets/text/m_text.dart';
-import 'package:growth_tree_app/widgets/text/s_text.dart';
-import 'package:growth_tree_app/widgets/text/title_text.dart';
 
+import '../../../utils/colors.dart';
+import '../../../widgets/avatar/user_avatar.dart';
+import '../../../widgets/progress_bar/progress_bar.dart';
+import '../../../widgets/text/l_text.dart';
+import '../../../widgets/text/m_text.dart';
+import '../../../widgets/text/s_text.dart';
+import '../../../widgets/text/title_text.dart';
 import 'member_progress_item_widget.dart';
 
 class MemberProgressDetailWidget extends StatelessWidget {

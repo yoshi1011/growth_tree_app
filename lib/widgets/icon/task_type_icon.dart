@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/utils/colors.dart';
+
+import '../../utils/colors.dart';
 
 @immutable
 class TaskTypeIcon extends StatelessWidget {

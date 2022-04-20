@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/widgets/form/google_login_button.dart';
-import 'package:growth_tree_app/widgets/form/outlined_text_field.dart';
-import 'package:growth_tree_app/widgets/frame/auth_page_frame.dart';
-import 'package:growth_tree_app/widgets/text/xs_text.dart';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:growth_tree_app/utils/colors.dart';
+import '../utils/colors.dart';
+import '../widgets/frame/auth_page_frame.dart';
+import '../widgets/text/xs_text.dart';
 
 class SentPasswordResetMailScreen extends HookConsumerWidget {
   const SentPasswordResetMailScreen({Key? key}) : super(key: key);
@@ -30,7 +29,8 @@ class SentPasswordResetMailScreen extends HookConsumerWidget {
             onPressed: () {},
             child: const Text(
               'トップ',
-              style: TextStyle(fontSize: 16, color: GrowthTreeColors.themeColor),
+              style:
+                  TextStyle(fontSize: 16, color: GrowthTreeColors.themeColor),
             ),
             style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(vertical: 18, horizontal: 20),

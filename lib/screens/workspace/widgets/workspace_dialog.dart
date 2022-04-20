@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/utils/colors.dart';
-import 'package:growth_tree_app/widgets/avatar/user_avatar.dart';
-import 'package:growth_tree_app/widgets/button/button.dart';
-import 'package:growth_tree_app/widgets/card/file_card.dart';
-import 'package:growth_tree_app/widgets/chip/task_status_chip.dart';
-import 'package:growth_tree_app/widgets/form/outlined_text_area.dart';
-import 'package:growth_tree_app/widgets/icon/task_type_icon.dart';
-import 'package:growth_tree_app/widgets/text/l_text.dart';
-import 'package:growth_tree_app/widgets/text/s_text.dart';
-import 'package:growth_tree_app/widgets/text/xs_text.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../../../utils/colors.dart';
+import '../../../widgets/avatar/user_avatar.dart';
+import '../../../widgets/button/button.dart';
+import '../../../widgets/card/file_card.dart';
+import '../../../widgets/chip/task_status_chip.dart';
+import '../../../widgets/form/outlined_text_area.dart';
+import '../../../widgets/icon/task_type_icon.dart';
+import '../../../widgets/text/l_text.dart';
+import '../../../widgets/text/s_text.dart';
+import '../../../widgets/text/xs_text.dart';
 
 class WorkspaceDialog extends HookConsumerWidget {
   const WorkspaceDialog({Key? key}) : super(key: key);
