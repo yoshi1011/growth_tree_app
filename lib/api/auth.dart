@@ -25,7 +25,7 @@ class Auth {
     }
   }
 
-  Future<String> logout(WidgetRef ref) async {
+  static Future<String> logout(WidgetRef ref) async {
     await ref.read(userProvider.notifier).deleteSessionData();
 
     return 'success';

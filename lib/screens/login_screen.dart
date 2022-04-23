@@ -113,6 +113,7 @@ class LoginScreen extends HookConsumerWidget {
               String res = await Auth.login(
                   ref, _emailController.text, _passwordController.text);
               _isLoading.value = false;
+              showSnackbar('ログインしました', context);
               if (res != 'success') {
                 showSnackbar('ログインができませんでした', context);
               }

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../api/auth.dart';
+import '../../utils/utils.dart';
 import 'side_menu_tile.dart';
 
 class SideMenuWidget extends StatefulHookConsumerWidget {
@@ -59,7 +62,15 @@ class SideMenuWidgetState extends ConsumerState<SideMenuWidget> {
           const SideMenuTile('アカウント', iconData: Icons.person, pathName: '/'),
           const SideMenuTile('管理者設定',
               iconData: Icons.corporate_fare, pathName: '/'),
-          const SideMenuTile('ログアウト', iconData: Icons.logout, pathName: '/'),
+          SideMenuTile(
+            'ログアウト',
+            iconData: Icons.logout,
+            function: () async {
+              await Auth.logout(ref);
+              showSnackbar('ログアウトしました', context);
+              context.go('/login');
+            },
+          ),
         ],
       ),
     );

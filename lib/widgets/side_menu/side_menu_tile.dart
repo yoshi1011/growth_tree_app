@@ -10,15 +10,19 @@ class SideMenuTile extends ConsumerWidget {
     this.menuName, {
     Key? key,
     required this.iconData,
-    required this.pathName,
+    this.pathName,
+    this.function,
   }) : super(key: key);
 
   final IconData iconData;
   final String menuName;
-  final String pathName;
+  final String? pathName;
+  final Function()? function;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final pathName = this.pathName;
+
     return ListTile(
       title: Row(
         children: [
@@ -37,7 +41,7 @@ class SideMenuTile extends ConsumerWidget {
           ),
         ],
       ),
-      onTap: () => context.go(pathName),
+      onTap: pathName != null ? () => context.go(pathName) : function,
     );
   }
 }
