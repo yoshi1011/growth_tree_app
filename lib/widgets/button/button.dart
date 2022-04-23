@@ -31,7 +31,7 @@ class BasicButton extends HookConsumerWidget {
             )
           : Text(
               labelName,
-              style: const TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
             ),
       style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 20),

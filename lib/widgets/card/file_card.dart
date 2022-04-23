@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import '../icon/file_download_icon.dart';
 import '../text/xs_text.dart';
 
-class FileCard extends StatefulWidget {
+class AttachmentCard extends StatefulWidget {
   final String name;
 
-  const FileCard({Key? key, required this.name}) : super(key: key);
+  const AttachmentCard({Key? key, required this.name}) : super(key: key);
 
   @override
-  State<FileCard> createState() => _FileCardState();
+  State<AttachmentCard> createState() => _AttachmentCardState();
 }
 
-class _FileCardState extends State<FileCard> {
+class _AttachmentCardState extends State<AttachmentCard> {
   double opacityLevel = 0.0;
 
   void _changeOpacity() {

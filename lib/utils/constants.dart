@@ -17,3 +17,8 @@ class Constant {
   static const String expiry = '_growth_tree_expiry';
   static const String uid = '_growth_tree_uid';
 }
+
+enum Role {
+  manager,
+  employee
+}
