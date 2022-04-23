@@ -32,9 +32,9 @@ class ListPageFrame extends HookConsumerWidget {
       contentWidget: Table(
         columnWidths: _setColumnWidths(columnWidths),
         children: <TableRow>[
-          _buildHeaderColumns(
-            columnNames,
-          ),
+          // ヘッダー
+          _buildHeaderColumns(columnNames),
+          // 各データRow
           ..._buildDataRows(dataList)
         ],
       ),
@@ -89,50 +89,53 @@ class ListPageFrame extends HookConsumerWidget {
     final listItem = [
       ...item.toList(),
       IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.more_vert,
-            color: GrowthTreeColors.darkGray,
-          ))
+        onPressed: () {},
+        icon: const Icon(
+          Icons.more_vert,
+          color: GrowthTreeColors.darkGray,
+        ),
+      ),
     ];
 
-    final dataColumns = listItem.map((data) {
-      late final child;
+    final dataColumns = listItem.map(
+      (data) {
+        late final child;
 
-      // データの型に応じてWidgetを変更する
-      if (data is String || data is int) {
-        child = SText(
-          data.toString(),
-          fontColor: GrowthTreeColors.darkGray,
-          fontWeight: FontWeight.normal,
-        );
-      } else if (data is List<User>) {
-        // UserのimageUrlからUserAvatarのリストを作成する
-        final avatarList = data
-            .map((d) => UserAvatar(imageUrl: d.imageUrl as String))
-            .toList();
+        // データの型に応じてWidgetを変更する
+        if (data is String || data is int) {
+          child = SText(
+            data.toString(),
+            fontColor: GrowthTreeColors.darkGray,
+            fontWeight: FontWeight.normal,
+          );
+        } else if (data is List<User>) {
+          // UserのimageUrlからUserAvatarのリストを作成する
+          final avatarList = data
+              .map((d) => UserAvatar(imageUrl: d.imageUrl as String))
+              .toList();
 
-        // 作成したAvatarからAvatarStackを作成する
-        child = UserAvatarList(avatarList: avatarList);
-      } else if (data is List<Skill>) {
-        // Containerの子Widgetにするため、Rowでラップする
-        child = Row(
-          children: data
-              .map((d) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: SkillChip(
-                      name: d.name,
-                      themeColor: d.themeColor,
-                    ),
-                  ))
-              .toList(),
-        );
-      } else {
-        child = data;
-      }
+          // 作成したAvatarからAvatarStackを作成する
+          child = UserAvatarList(avatarList: avatarList);
+        } else if (data is List<Skill>) {
+          // Containerの子Widgetにするため、Rowでラップする
+          child = Row(
+            children: data
+                .map((d) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: SkillChip(
+                        name: d.name,
+                        themeColor: d.themeColor,
+                      ),
+                    ))
+                .toList(),
+          );
+        } else {
+          child = data;
+        }
 
-      return Container(height: 40, alignment: Alignment.center, child: child);
-    }).toList();
+        return Container(height: 40, alignment: Alignment.center, child: child);
+      },
+    ).toList();
 
     return TableRow(
       children: dataColumns,

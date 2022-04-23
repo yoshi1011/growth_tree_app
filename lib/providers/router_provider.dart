@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'user_provider.dart';
 import '../screens/curriculums/curriculum_detail_screen.dart';
-import '../screens/curriculums_screen.dart';
+import '../screens/curriculums/curriculums_screen.dart';
 import '../screens/forgot_password_screen.dart';
 import '../screens/login_screen.dart';
 import '../screens/sent_password_reset_mail_screen.dart';
