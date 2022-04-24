@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/widgets/text/s_text.dart';
+
 import 'package:intl/intl.dart';
+
+import '../text/s_text.dart';
 
 class NotificationCard extends StatelessWidget {
   const NotificationCard(

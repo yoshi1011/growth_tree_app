@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/utils/colors.dart';
+
+import '../../utils/colors.dart';
 
 class FileDownloadIcon extends StatelessWidget {
   const FileDownloadIcon({Key? key}) : super(key: key);

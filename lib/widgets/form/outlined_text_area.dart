@@ -16,12 +16,14 @@ class OutlinedTextArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      textAlign: TextAlign.start,
       decoration: InputDecoration(
         labelText: labelText,
         // TODO: ラベルの位置を中央から上部に変更する
         labelStyle: const TextStyle(
           color: Color(0xffBBBBBB),
         ),
+        alignLabelWithHint: true,
         border: const OutlineInputBorder(),
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: GrowthTreeColors.themeColor, width: 2),

@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/svg.dart';
-import 'package:growth_tree_app/widgets/side_menu/side_menu_tile.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../../api/auth.dart';
+import '../../utils/utils.dart';
+import 'side_menu_tile.dart';
 
 class SideMenuWidget extends StatefulHookConsumerWidget {
   const SideMenuWidget({Key? key}) : super(key: key);
@@ -40,14 +45,32 @@ class SideMenuWidgetState extends ConsumerState<SideMenuWidget> {
               ],
             ),
           ),
-          const SideMenuTile('ダッシュボード', iconData: Icons.home, pathName: '/',),
-          const SideMenuTile('カリキュラム', iconData: Icons.calendar_month, pathName: '/curriculums',),
-          const SideMenuTile('ミッション', iconData: Icons.assignment_late_outlined, pathName: '/missions'),
+          const SideMenuTile(
+            'ダッシュボード',
+            iconData: Icons.home,
+            pathName: '/',
+          ),
+          const SideMenuTile(
+            'カリキュラム',
+            iconData: Icons.calendar_month,
+            pathName: '/curriculums',
+          ),
+          const SideMenuTile('ミッション',
+              iconData: Icons.assignment_late_outlined, pathName: '/missions'),
           const SideMenuTile('スキル', iconData: Icons.psychology, pathName: '/'),
           const SideMenuTile('メンバー', iconData: Icons.groups, pathName: '/'),
-          const SideMenuTile('アカウント', iconData: Icons.person, pathName: '/'),
-          const SideMenuTile('管理者設定', iconData: Icons.corporate_fare, pathName: '/'),
-          const SideMenuTile('ログアウト', iconData: Icons.logout, pathName: '/'),
+          const SideMenuTile('アカウント', iconData: Icons.person, pathName: '/accounts'),
+          const SideMenuTile('管理者設定',
+              iconData: Icons.corporate_fare, pathName: '/'),
+          SideMenuTile(
+            'ログアウト',
+            iconData: Icons.logout,
+            function: () async {
+              await Auth.logout(ref);
+              showSnackbar('ログアウトしました', context);
+              context.go('/login');
+            },
+          ),
         ],
       ),
     );

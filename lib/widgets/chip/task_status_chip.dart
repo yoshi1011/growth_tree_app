@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:growth_tree_app/utils/colors.dart';
-import 'package:growth_tree_app/widgets/text/m_text.dart';
+
+import '../../utils/colors.dart';
+import '../text/m_text.dart';
 
 class TaskStatusChip extends StatelessWidget {
   final String labelName;
@@ -33,6 +34,5 @@ class TaskStatusChip extends StatelessWidget {
       ),
       backgroundColor: themeColor,
     );
-    ;
   }
 }

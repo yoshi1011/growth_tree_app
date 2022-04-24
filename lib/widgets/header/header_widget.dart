@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:growth_tree_app/utils/colors.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import 'package:growth_tree_app/utils/colors.dart';
 
 class HeaderWidget extends StatefulHookConsumerWidget
     implements PreferredSizeWidget {
