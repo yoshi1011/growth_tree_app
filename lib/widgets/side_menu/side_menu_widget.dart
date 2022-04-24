@@ -59,7 +59,7 @@ class SideMenuWidgetState extends ConsumerState<SideMenuWidget> {
               iconData: Icons.assignment_late_outlined, pathName: '/missions'),
           const SideMenuTile('スキル', iconData: Icons.psychology, pathName: '/'),
           const SideMenuTile('メンバー', iconData: Icons.groups, pathName: '/'),
-          const SideMenuTile('アカウント', iconData: Icons.person, pathName: '/'),
+          const SideMenuTile('アカウント', iconData: Icons.person, pathName: '/accounts'),
           const SideMenuTile('管理者設定',
               iconData: Icons.corporate_fare, pathName: '/'),
           SideMenuTile(

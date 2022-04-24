@@ -9,4 +9,5 @@ class GrowthTreeColors {
   static const Color black = Color(0xff333333);
   static const Color red = Color(0xFFFF0000);
   static const Color yellow = Color(0xFFFFC107);
+  static const Color blue = Color(0xFF2196F3);
 }

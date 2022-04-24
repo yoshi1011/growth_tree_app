@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../screens/account/account_screen.dart';
 import 'user_provider.dart';
 import '../screens/curriculums/curriculum_detail_screen.dart';
 import '../screens/curriculums/curriculums_screen.dart';
@@ -14,9 +15,9 @@ import '../screens/sign_up_screen.dart';
 import '../screens/unknown_screen.dart';
 import '../screens/workspace/workspace_screen.dart';
 import '../models/user.dart';
-import '../screens/missions_screen.dart';
+import '../screens/missons/missions_screen.dart';
 
-const loggedInPaths = ['/', '/curriculums', '/curriculum_detail'];
+const loggedInPaths = ['/', '/curriculums', '/curriculum_detail', '/account'];
 const loggedOutPaths = [
   '/login',
   '/forgot_password',
@@ -54,6 +55,9 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
           path: '/missions',
           builder: (context, state) => const MissionsScreen()),
+      GoRoute(
+          path: '/accounts',
+          builder: (context, state) => const AccountScreen()),
       GoRoute(path: '/login', builder: (context, state) => const LoginScreen()),
       GoRoute(
           path: '/forgot_password',

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../utils/utils.dart';
 import 'comment_card.dart';
 import '../../../models/comment.dart';
 import '../../../utils/constants.dart';
@@ -17,6 +18,14 @@ import '../../../widgets/text/s_text.dart';
 
 class WorkspaceDialog extends HookConsumerWidget {
   const WorkspaceDialog({Key? key}) : super(key: key);
+
+  void _sendCompletedMessage(context) {
+    showSnackbar('完了メッセージを送信しました。', context);
+  }
+
+  void _sendResubmitMessage(context) {
+    showSnackbar('再提出メッセージを送信しました。', context);
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -99,10 +108,11 @@ class WorkspaceDialog extends HookConsumerWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       BasicButton(
                         labelName: '再提出',
                         color: GrowthTreeColors.red,
+                        onPressed: () => _sendResubmitMessage(context),
                       ),
                       SizedBox(
                         width: 15,
@@ -110,6 +120,7 @@ class WorkspaceDialog extends HookConsumerWidget {
                       BasicButton(
                         labelName: '完了',
                         color: GrowthTreeColors.themeColor,
+                        onPressed: () => _sendCompletedMessage(context),
                       ),
                     ],
                   ),
