@@ -20,7 +20,9 @@ class UserState extends StateNotifier<User> {
     await storage.write(key: Constant.expiry, value: result['expiry']![0]);
     await storage.write(key: Constant.uid, value: result['uid']![0]);
 
-    state = state.copyWith(accessToken: result['access-token']![0]);
+    state = state.copyWith(
+      accessToken: result['access-token']![0],
+    );
   }
 
   Future<void> deleteSessionData() async {
@@ -33,7 +35,9 @@ class UserState extends StateNotifier<User> {
     var storage = const FlutterSecureStorage();
 
     final accessToken = await storage.read(key: Constant.accessToken);
-    state = state.copyWith(accessToken: accessToken);
+    state = state.copyWith(
+      accessToken: accessToken,
+    );
   }
 }
 
