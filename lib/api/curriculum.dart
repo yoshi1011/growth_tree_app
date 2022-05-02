@@ -5,19 +5,20 @@ class CurriculumApi {
     return await ApiMethod.get('/curriculums');
   }
 
-  static Future<dynamic> get(num id) async {
-    return await ApiMethod.get('/curriculums/$id');
+  static Future<dynamic> get({required num curriculumId}) async {
+    return await ApiMethod.get('/curriculums/$curriculumId');
   }
 
-  static Future<dynamic> create(Map<String, dynamic> body) async {
+  static Future<dynamic> create({required Map<String, dynamic> body}) async {
     return await ApiMethod.post('/curriculums', body);
   }
 
-  static Future<dynamic> update(num id, Map<String, dynamic> body) async {
-    return await ApiMethod.update('/curriculums/$id', body);
+  static Future<dynamic> update(
+      {required num curriculumId, required Map<String, dynamic> body}) async {
+    return await ApiMethod.update('/curriculums/$curriculumId', body);
   }
 
-  static Future<dynamic> delete(num id) async {
-    return await ApiMethod.delete('/curriculums/$id');
+  static Future<dynamic> delete({required num curriculumId}) async {
+    return await ApiMethod.delete('/curriculums/$curriculumId');
   }
 }
