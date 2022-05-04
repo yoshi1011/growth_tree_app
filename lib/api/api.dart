@@ -45,7 +45,7 @@ class ApiMethod {
       responseType: ResponseType.json,
     );
 
-    var result = dio.post(params, options: options, data: body).then(
+    var result = dio.post(params, options: options, data: {'body': body}).then(
       (response) async {
 
         return response.data;
@@ -76,7 +76,7 @@ class ApiMethod {
       responseType: ResponseType.json,
     );
 
-    var result = dio.patch(params, options: options, data: body).then(
+    var result = dio.patch(params, options: options, data: {'body': body}).then(
           (response) async {
 
         return response.data;
