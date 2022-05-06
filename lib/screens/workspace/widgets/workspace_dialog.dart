@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../models/user.dart';
 import '../../../utils/utils.dart';
 import 'comment_card.dart';
 import '../../../models/comment.dart';
@@ -184,15 +185,30 @@ class WorkspaceDialog extends HookConsumerWidget {
 }
 
 // test data
+
+final testUser = User(
+  email: "admin@example.com",
+  firstName: "山田",
+  lastName: "太郎",
+  birthday: DateTime(2022, 4, 1),
+  role: Role.employee,
+  accessToken: 'aaa',
+  imageUrl:
+  'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80',
+);
+
 final comment = Comment(
   content: 'チェリー本を見ながらRubyコードを書きました。採点のほどよろしくお願いいたします。',
-  attachmentName: 'main.rb',
-  datetime: '2022年4月1日',
+  contributor: testUser,
+  attachments: {},
+  createdAt: DateTime(2022, 4, 1),
   action: '提出',
 );
 final comment2 = Comment(
   content: 'やりなおしてください',
-  datetime: '2022年4月1日',
+  contributor: testUser,
+  attachments: {},
+  createdAt: DateTime(2022, 4, 1),
   action: '再提出',
 );
 

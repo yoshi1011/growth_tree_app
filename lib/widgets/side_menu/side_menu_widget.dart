@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../api/auth.dart';
+import '../../data/repository/auth_repository.dart';
 import '../../utils/utils.dart';
 import 'side_menu_tile.dart';
 
@@ -66,7 +66,7 @@ class SideMenuWidgetState extends ConsumerState<SideMenuWidget> {
             'ログアウト',
             iconData: Icons.logout,
             function: () async {
-              await Auth.logout(ref);
+              await ref.read(authRepositoryProvider).logout();
               showSnackbar('ログアウトしました', context);
               context.go('/login');
             },

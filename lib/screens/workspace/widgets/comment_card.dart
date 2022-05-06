@@ -46,7 +46,7 @@ class CommentCard extends StatelessWidget {
     // type promotionを有効にするための対策。
     // https://medium.com/flutter-jp/null-safety-fe6503a81d5c#5a0c
     // すべてのプロパティをローカル変数化したほうがわかりやすいかは検討の余地あり
-    final attachmentName = comment.attachmentName;
+    final attachmentName = 'fileName';
 
     return Container(
       width: 480,
@@ -101,7 +101,7 @@ class CommentCard extends StatelessWidget {
               Row(
                 children: [
                   XsText(
-                    comment.datetime,
+                    comment.createdAt.toString(),
                     fontColor: GrowthTreeColors.lightGray,
                     fontWeight: FontWeight.normal,
                   ),

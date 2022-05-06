@@ -31,10 +31,16 @@ class CurriculumsScreen extends StatelessWidget {
 
 // test data
 final testUser = User(
-    accessToken: 'aaa',
-    imageUrl:
-        'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80');
+  email: "admin@example.com",
+  firstName: "山田",
+  lastName: "太郎",
+  birthday: DateTime(2022, 4, 1),
+  role: Role.employee,
+  accessToken: 'aaa',
+  imageUrl:
+      'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80',
+);
 final item = CurriculumItem('よくわかるRuby', 15, [testUser, testUser, testUser],
-    [Skill('Ruby', Colors.red), Skill('JavaScript', Colors.yellow)]);
+    [Skill(name: 'Ruby', themeColor: Colors.red), Skill(name: 'JavaScript', themeColor: Colors.yellow)]);
 
 final items = [item, item, item];

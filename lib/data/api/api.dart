@@ -1,5 +1,8 @@
 import 'package:dio/adapter_browser.dart';
 import 'package:dio/dio.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import 'app_dio.dart';
 
 class ApiMethod {
   static Future<dynamic> get(String params) async {

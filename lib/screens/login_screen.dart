@@ -4,13 +4,13 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../data/repository/auth_repository.dart';
 import '../utils/colors.dart';
 import '../utils/utils.dart';
 import '../widgets/form/google_login_button.dart';
 import '../widgets/form/outlined_text_field.dart';
 import '../widgets/frame/auth_page_frame.dart';
 import '../widgets/text/xs_text.dart';
-import '../api/auth.dart';
 
 class LoginScreen extends HookConsumerWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -110,8 +110,8 @@ class LoginScreen extends HookConsumerWidget {
           ElevatedButton(
             onPressed: () async {
               _isLoading.value = true;
-              String res = await Auth.login(
-                  ref, _emailController.text, _passwordController.text);
+              var res = await ref.read(authRepositoryProvider).login(
+                  _emailController.text, _passwordController.text);
               _isLoading.value = false;
               if (res == 'success') {
                 showSnackbar('ログインしました', context);
