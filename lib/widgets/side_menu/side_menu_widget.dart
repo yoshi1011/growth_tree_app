@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../data/repository/auth_repository.dart';
+import '../../providers/user_provider.dart';
 import '../../utils/utils.dart';
 import 'side_menu_tile.dart';
 
-class SideMenuWidget extends StatefulHookConsumerWidget {
+class SideMenuWidget extends HookConsumerWidget {
   const SideMenuWidget({Key? key}) : super(key: key);
 
   @override
-  SideMenuWidgetState createState() => SideMenuWidgetState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final _userStateNotifier = ref.watch(userStateNotifier.notifier);
 
-class SideMenuWidgetState extends ConsumerState<SideMenuWidget> {
-  @override
-  Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
         children: [
@@ -66,9 +62,9 @@ class SideMenuWidgetState extends ConsumerState<SideMenuWidget> {
             'ログアウト',
             iconData: Icons.logout,
             function: () async {
-              await ref.read(authRepositoryProvider).logout();
+              await _userStateNotifier.logout();
               showSnackbar('ログアウトしました', context);
-              context.go('/login');
+              // context.go('/login');
             },
           ),
         ],

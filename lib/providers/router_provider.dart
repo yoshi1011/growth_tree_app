@@ -9,7 +9,7 @@ import 'user_provider.dart';
 import '../screens/curriculums/curriculum_detail_screen.dart';
 import '../screens/curriculums/curriculums_screen.dart';
 import '../screens/forgot_password_screen.dart';
-import '../screens/login_screen.dart';
+import '../screens/login/login_screen.dart';
 import '../screens/sent_password_reset_mail_screen.dart';
 import '../screens/sent_register_mail_screen.dart';
 import '../screens/sign_up_screen.dart';
@@ -31,16 +31,17 @@ final routerProvider = Provider<GoRouter>((ref) {
     debugLogDiagnostics: true,
     redirect: (state) {
       // TODO: ログイン状態をCookieから確認する方法を実装して再度書き直す
-      // final isLoggedIn = ref.read(userProvider).isLoggedIn;
+      final _userStateNotifier = ref.watch(userStateNotifier.notifier);
+      final isLoggedIn = _userStateNotifier.isLoggedIn();
       final goToLoggedInPages = loggedInPaths.contains(state.subloc);
       final goToLoggedOutPages = loggedOutPaths.contains(state.subloc);
 
-      // if (!isLoggedIn && goToLoggedInPages) {
-      //   return '/login';
-      // }
-      // if (isLoggedIn && goToLoggedOutPages) {
-      //   return '/';
-      // }
+      if (!isLoggedIn && goToLoggedInPages) {
+        return '/login';
+      }
+      if (isLoggedIn && goToLoggedOutPages) {
+        return '/';
+      }
 
       return null;
     },
@@ -82,6 +83,6 @@ class RouterNotifier extends ChangeNotifier {
   final Ref _ref;
 
   RouterNotifier(this._ref) {
-    _ref.listen<UserState?>(userNotifier, (_, __) => notifyListeners());
+    _ref.listen<UserState>(userStateNotifier, (_, __) => notifyListeners());
   }
 }
