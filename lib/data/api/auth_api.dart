@@ -19,6 +19,9 @@ abstract class AuthApi {
   @POST('/auth/sign_in')
   Future<User> login(@Body() Map<String, dynamic> body);
 
+  @POST('/auth')
+  Future<User> signUp(@Body() Map<String, dynamic> body);
+
   @DELETE('/auth/sign_out')
   Future<void> logout();
 }

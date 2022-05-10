@@ -64,7 +64,6 @@ class SideMenuWidget extends HookConsumerWidget {
             function: () async {
               await _userStateNotifier.logout();
               showSnackbar('ログアウトしました', context);
-              // context.go('/login');
             },
           ),
         ],

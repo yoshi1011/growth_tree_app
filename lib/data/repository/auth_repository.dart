@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../models/result.dart';
@@ -24,6 +26,36 @@ class AuthRepository {
     Map<String, dynamic> body = {'email': email, 'password': password};
 
     return Result.recieveFuture(() async => await _api.login(body));
+  }
+
+  Future<Result<dynamic>> signUp({
+    required String email,
+    required String password,
+    required String firstName,
+    required String lastName,
+    required String birthday,
+    required String companyName,
+    required String zipCode,
+    required String prefecture,
+    required String city,
+    required String addressLine1,
+    String? addressLine2,}) async {
+
+    Map<String, dynamic> body = {
+      'email': email,
+      'password': password,
+      'first_name': firstName,
+      'last_name': lastName,
+      'birthday': birthday,
+      'name': companyName,
+      'zip_code': zipCode,
+      'prefecture': prefecture,
+      'city': city,
+      'address_line_1': addressLine1,
+      'address_line_2': addressLine2,
+    };
+
+    return Result.recieveFuture(() async => await _api.signUp(body));
   }
 
   Future<Result<void>> logout() async {
