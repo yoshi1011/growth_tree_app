@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'providers/router_provider.dart';
+import 'providers/user_provider.dart';
 
 void main() {
-  GoRouter.setUrlPathStrategy(UrlPathStrategy.path);
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -15,13 +15,30 @@ class MyApp extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final router = ref.watch(routerProvider);
+    final _userStateNotifier = ref.read(userStateNotifier.notifier);
+    // GoRouterが動く前にUserStateを初期化する
+    final snapshot = useFuture(useMemoized(
+        () async {
+          return await _userStateNotifier.initLoad();
+        }
+    ));
+    switch (snapshot.connectionState) {
+      case ConnectionState.done:
+        final router = ref.watch(routerProvider);
 
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routeInformationParser: router.routeInformationParser,
-      routerDelegate: router.routerDelegate,
-      title: 'growth tree',
-    );
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          routeInformationParser: router.routeInformationParser,
+          routerDelegate: router.routerDelegate,
+          title: 'growth tree',
+        );
+        // TODO: 各状態の画面をきれいに作り直す
+      case ConnectionState.waiting:
+        return const CircularProgressIndicator();
+      case ConnectionState.none:
+        return MaterialApp(home: const Scaffold(body: Text('error'),));
+      case ConnectionState.active:
+        return const CircularProgressIndicator();
+    }
   }
 }
