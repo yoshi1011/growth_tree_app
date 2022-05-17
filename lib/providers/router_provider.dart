@@ -17,7 +17,7 @@ import '../screens/unknown_screen.dart';
 import '../screens/workspace/workspace_screen.dart';
 import '../screens/missons/missions_screen.dart';
 
-const loggedInPaths = ['/', '/curriculums', '/curriculum_detail', '/account'];
+const loggedInPaths = ['/', '/curriculums', '/missions', '/accounts'];
 const loggedOutPaths = [
   '/login',
   '/forgot_password',
@@ -76,6 +76,7 @@ final routerProvider = Provider<GoRouter>((ref) {
     errorPageBuilder: (context, state) => const MaterialPage(
       child: UnknownScreen(),
     ),
+    urlPathStrategy: UrlPathStrategy.path
   );
 });
 

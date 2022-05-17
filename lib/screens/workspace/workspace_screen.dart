@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'widgets/member_progress_detail_widget.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'widgets/member_progress_detail_widget.dart';
+import '../../view_models/curriculum_list_view_model.dart';
 import 'widgets/member_progress_list_widget.dart';
 import '../../widgets/frame/base_frame.dart';
 import '../../widgets/header/header_widget.dart';
@@ -14,6 +15,7 @@ class WorkspaceScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final _api = ref.read(curriculumListProvider.notifier);
     return Scaffold(
       appBar: HeaderWidget(),
       drawer: SideMenuWidget(),

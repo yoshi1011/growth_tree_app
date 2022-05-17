@@ -12,9 +12,7 @@ final userStateNotifier =
 
 // 全ページに跨ってログイン状態を保持するためのNotifier
 class UserStateNotifier extends StateNotifier<UserState> {
-  UserStateNotifier(this._reader) : super(UserState()){
-    initLoad();
-  }
+  UserStateNotifier(this._reader) : super(UserState());
 
   final Reader _reader;
 

@@ -7,6 +7,7 @@ import 'providers/router_provider.dart';
 import 'providers/user_provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const ProviderScope(child: MyApp()));
 }
 
