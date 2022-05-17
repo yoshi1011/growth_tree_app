@@ -4,13 +4,14 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../utils/colors.dart';
-import '../utils/utils.dart';
-import '../widgets/form/google_login_button.dart';
-import '../widgets/form/outlined_text_field.dart';
-import '../widgets/frame/auth_page_frame.dart';
-import '../widgets/text/xs_text.dart';
-import '../api/auth.dart';
+import '../../providers/user_provider.dart';
+import '../../utils/colors.dart';
+import '../../utils/utils.dart';
+import '../../view_models/login_view_model.dart';
+import '../../widgets/form/google_login_button.dart';
+import '../../widgets/form/outlined_text_field.dart';
+import '../../widgets/frame/auth_page_frame.dart';
+import '../../widgets/text/xs_text.dart';
 
 class LoginScreen extends HookConsumerWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -20,6 +21,9 @@ class LoginScreen extends HookConsumerWidget {
     final _emailController = useTextEditingController();
     final _passwordController = useTextEditingController();
     final _isLoading = useState(false);
+
+    final _loginViewModel = ref.read(loginViewModelProvider.notifier);
+    final _userStateNotifier = ref.watch(userStateNotifier.notifier);
 
     return AuthPageFrame(
       title: 'ログイン',
@@ -110,10 +114,10 @@ class LoginScreen extends HookConsumerWidget {
           ElevatedButton(
             onPressed: () async {
               _isLoading.value = true;
-              String res = await Auth.login(
-                  ref, _emailController.text, _passwordController.text);
+              await _loginViewModel.login(
+                  _emailController.text, _passwordController.text);
               _isLoading.value = false;
-              if (res == 'success') {
+              if (_userStateNotifier.isLoggedIn() == true) {
                 showSnackbar('ログインしました', context);
               } else {
                 showSnackbar('ログインができませんでした', context);

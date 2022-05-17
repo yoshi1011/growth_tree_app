@@ -7,14 +7,16 @@ class OutlinedTextField extends StatelessWidget {
   final String labelText;
   final TextInputType textInputType;
   final bool isPass;
+  final FormFieldValidator? validator;
 
-  const OutlinedTextField(
-      {Key? key,
-      required this.controller,
-      required this.labelText,
-      required this.textInputType,
-      this.isPass = false})
-      : super(key: key);
+  const OutlinedTextField({
+    Key? key,
+    required this.controller,
+    required this.labelText,
+    required this.textInputType,
+    this.isPass = false,
+    this.validator,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,8 @@ class OutlinedTextField extends StatelessWidget {
       ),
       keyboardType: textInputType,
       obscureText: isPass,
+      validator: validator,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
     );
   }
 }

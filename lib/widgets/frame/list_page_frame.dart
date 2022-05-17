@@ -108,15 +108,15 @@ class ListPageFrame extends HookConsumerWidget {
             fontColor: GrowthTreeColors.darkGray,
             fontWeight: FontWeight.normal,
           );
-        } else if (data is List<User>) {
+        } else if (data is Set<User>) {
           // UserのimageUrlからUserAvatarのリストを作成する
           final avatarList = data
-              .map((d) => UserAvatar(imageUrl: d.imageUrl as String))
+              .map((d) => UserAvatar(imageUrl: d.imageUrl ?? 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80'))
               .toList();
 
           // 作成したAvatarからAvatarStackを作成する
           child = UserAvatarList(avatarList: avatarList);
-        } else if (data is List<Skill>) {
+        } else if (data is Set<Skill>) {
           // Containerの子Widgetにするため、Rowでラップする
           child = Row(
             children: data
@@ -132,7 +132,7 @@ class ListPageFrame extends HookConsumerWidget {
         } else {
           child = data;
         }
-
+        print(child);
         return Container(height: 40, alignment: Alignment.center, child: child);
       },
     ).toList();

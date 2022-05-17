@@ -1,40 +1,45 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'providers/router_provider.dart';
 import 'providers/user_provider.dart';
 
 void main() {
-  GoRouter.setUrlPathStrategy(UrlPathStrategy.path);
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatefulHookConsumerWidget {
+class MyApp extends HookConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  MyAppState createState() => MyAppState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final _userStateNotifier = ref.read(userStateNotifier.notifier);
+    // GoRouterが動く前にUserStateを初期化する
+    final snapshot = useFuture(useMemoized(
+        () async {
+          return await _userStateNotifier.initLoad();
+        }
+    ));
+    switch (snapshot.connectionState) {
+      case ConnectionState.done:
+        final router = ref.watch(routerProvider);
 
-class MyAppState extends ConsumerState<MyApp> {
-  @override
-  void initState() {
-    super.initState();
-    // ログイン状態のとき、一度ログイン画面が表示されてから移動するため要修正
-    ref.read(userProvider.notifier).readSessionData();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final router = ref.watch(routerProvider);
-
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routeInformationParser: router.routeInformationParser,
-      routerDelegate: router.routerDelegate,
-      title: 'growth tree',
-    );
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          routeInformationParser: router.routeInformationParser,
+          routerDelegate: router.routerDelegate,
+          title: 'growth tree',
+        );
+        // TODO: 各状態の画面をきれいに作り直す
+      case ConnectionState.waiting:
+        return const CircularProgressIndicator();
+      case ConnectionState.none:
+        return MaterialApp(home: const Scaffold(body: Text('error'),));
+      case ConnectionState.active:
+        return const CircularProgressIndicator();
+    }
   }
 }

@@ -29,6 +29,6 @@ class MissionsScreen extends StatelessWidget {
 
 // test data
 final item = MissionItem('チェリー本を読み終える', 15, 10,
-    [Skill('Ruby', Colors.red), Skill('JavaScript', Colors.yellow)]);
+    [Skill(name: 'Ruby', themeColor: Colors.red), Skill(name: 'JavaScript', themeColor: Colors.yellow)]);
 
 final items = [item, item, item];
