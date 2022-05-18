@@ -1,6 +1,9 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Project imports:
 import '../../utils/colors.dart';
+
 // TODO: widthが決まらないとエラーになるためContainerで囲っての利用が必須になっている仕様を変更する
 class OutlinedTextField extends StatelessWidget {
   final TextEditingController controller;

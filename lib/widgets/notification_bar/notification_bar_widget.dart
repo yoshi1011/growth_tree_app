@@ -1,11 +1,14 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
 import '../../utils/colors.dart';
-import 'notification_card.dart';
-import '../text/title_text.dart';
 import '../text/s_text.dart';
+import '../text/title_text.dart';
+import 'notification_card.dart';
 
 class NotificationBarWidget extends StatefulHookConsumerWidget {
   const NotificationBarWidget({Key? key}) : super(key: key);

@@ -1,6 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
 import '../../widgets/frame/base_frame.dart';
 import '../../widgets/header/header_widget.dart';
 import '../../widgets/notification_bar/notification_bar_widget.dart';

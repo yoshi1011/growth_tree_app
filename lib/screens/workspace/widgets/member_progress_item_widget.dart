@@ -1,10 +1,12 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
-import 'workspace_dialog.dart';
+// Project imports:
 import '../../../utils/colors.dart';
 import '../../../widgets/chip/unread_chip.dart';
 import '../../../widgets/text/s_text.dart';
 import '../../../widgets/text/xs_text.dart';
+import 'workspace_dialog.dart';
 
 class MemberProgressItemWidget extends StatelessWidget {
   const MemberProgressItemWidget({Key? key}) : super(key: key);

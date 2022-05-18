@@ -1,5 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Project imports:
 import '../../../utils/colors.dart';
 import '../../../widgets/avatar/user_avatar.dart';
 import '../../../widgets/progress_bar/progress_bar.dart';

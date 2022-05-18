@@ -1,8 +1,10 @@
+// Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
 import '../data/repository/skill_repository.dart';
-import '../models/skill.dart';
 import '../models/result.dart';
+import '../models/skill.dart';
 
 final skillListProvider =
     StateNotifierProvider<SkillListViewModel, Result<List<Skill>>?>((ref) {

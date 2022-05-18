@@ -1,5 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Project imports:
 import '../../../utils/colors.dart';
 import '../../../widgets/text/s_text.dart';
 import 'member_progress_card.dart';

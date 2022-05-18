@@ -1,3 +1,4 @@
+// Project imports:
 import 'table_item.dart';
 
 class MemberItem implements TableItem {

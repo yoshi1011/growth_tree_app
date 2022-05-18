@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import '../../../models/comment.dart';
 import '../../../utils/colors.dart';
 import '../../../utils/constants.dart';

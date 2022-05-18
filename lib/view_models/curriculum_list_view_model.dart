@@ -1,5 +1,7 @@
+// Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
 import '../data/repository/curriculum_repository.dart';
 import '../models/curriculum.dart';
 import '../models/result.dart';

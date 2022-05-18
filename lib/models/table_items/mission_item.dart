@@ -1,6 +1,7 @@
+// Project imports:
 import '../mission.dart';
-import 'table_item.dart';
 import '../skill.dart';
+import 'table_item.dart';
 
 class MissionItem implements TableItem {
   final String name;

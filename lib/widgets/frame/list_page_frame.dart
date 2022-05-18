@@ -1,15 +1,18 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
+import '../../models/skill.dart';
 import '../../models/table_items/table_item.dart';
+import '../../models/user.dart';
 import '../../utils/colors.dart';
 import '../avatar/user_avatar.dart';
-import 'base_frame.dart';
-import '../text/s_text.dart';
-import '../../models/skill.dart';
-import '../../models/user.dart';
 import '../chip/skill_chip.dart';
+import '../text/s_text.dart';
+import 'base_frame.dart';
 
 class ListPageFrame extends HookConsumerWidget {
   final String title;

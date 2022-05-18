@@ -1,22 +1,25 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
 import '../screens/account/account_screen.dart';
-import '../screens/skills/skills_screen.dart';
-import 'user_state.dart';
-import 'user_provider.dart';
 import '../screens/curriculums/curriculum_detail_screen.dart';
 import '../screens/curriculums/curriculums_screen.dart';
 import '../screens/forgot_password_screen.dart';
 import '../screens/login/login_screen.dart';
+import '../screens/missions/missions_screen.dart';
 import '../screens/sent_password_reset_mail_screen.dart';
 import '../screens/sent_register_mail_screen.dart';
 import '../screens/sign_up/sign_up_screen.dart';
+import '../screens/skills/skills_screen.dart';
 import '../screens/unknown_screen.dart';
 import '../screens/workspace/workspace_screen.dart';
-import '../screens/missions/missions_screen.dart';
+import 'user_provider.dart';
+import 'user_state.dart';
 
 const loggedInPaths = [
   '/',

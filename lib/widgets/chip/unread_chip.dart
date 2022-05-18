@@ -1,5 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Project imports:
 import '../../utils/colors.dart';
 import '../text/xs_text.dart';
 
