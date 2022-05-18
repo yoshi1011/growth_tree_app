@@ -15,7 +15,7 @@ import '../screens/sent_register_mail_screen.dart';
 import '../screens/sign_up/sign_up_screen.dart';
 import '../screens/unknown_screen.dart';
 import '../screens/workspace/workspace_screen.dart';
-import '../screens/missons/missions_screen.dart';
+import '../screens/missions/missions_screen.dart';
 
 const loggedInPaths = ['/', '/curriculums', '/missions', '/accounts'];
 const loggedOutPaths = [

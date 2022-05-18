@@ -1,17 +1,26 @@
+import '../mission.dart';
 import 'table_item.dart';
 import '../skill.dart';
 
 class MissionItem implements TableItem {
   final String name;
-  final int missionCount;
+  final int taskCount;
   final int settingCount;
-  final List<Skill> targetSkills;
+  final Set<Skill> skills;
 
   MissionItem(
-      this.name, this.missionCount, this.settingCount, this.targetSkills);
+      this.name, this.taskCount, this.settingCount, this.skills);
+
+  MissionItem.fromMission(Mission mission)
+  : this(
+    mission.name,
+    mission.tasks.length,
+    mission.settingCount,
+    mission.skills
+  );
 
   @override
   List toList() {
-    return [name, missionCount, settingCount, targetSkills];
+    return [name, taskCount, settingCount, skills];
   }
 }

@@ -13,6 +13,7 @@ class Mission with _$Mission {
   const factory Mission({
     required String name,
     required String description,
+    required int settingCount,
     required Set<Skill> skills,
     required Set<Task> tasks,
   }) = _Mission;

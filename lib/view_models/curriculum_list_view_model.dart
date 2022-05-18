@@ -3,7 +3,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../data/repository/curriculum_repository.dart';
 import '../models/curriculum.dart';
 import '../models/result.dart';
-import '../models/table_items/curriculum_item.dart';
 
 final curriculumListProvider =
     StateNotifierProvider<CurriculumListViewModel, Result<List<Curriculum>>?>((ref) {
@@ -21,8 +20,6 @@ class CurriculumListViewModel extends StateNotifier<Result<List<Curriculum>>?> {
 
   Future<void> list() async {
     // page数、絞り込み条件などを付与する可能性あり
-    // Result<List<Curriculum>> curriculumListResult = await _repository.list();
-    // return curriculumListResult;
     await _repository.list().then(
       (result) {
         state = result;

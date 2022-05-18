@@ -241,7 +241,7 @@ final memberItems = [item, item, item, item, item];
 
 // test data
 final missionItem = MissionItem('チェリー本を読み終える', 15, 10,
-    [Skill(name: 'Ruby', themeColor: Colors.red), Skill(name: 'JavaScript', themeColor: Colors.yellow)]);
+    {Skill(name: 'Ruby', themeColor: Colors.red), Skill(name: 'JavaScript', themeColor: Colors.yellow)});
 
 final missionItems = [
   missionItem,

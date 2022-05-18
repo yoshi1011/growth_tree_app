@@ -132,7 +132,6 @@ class ListPageFrame extends HookConsumerWidget {
         } else {
           child = data;
         }
-        print(child);
         return Container(height: 40, alignment: Alignment.center, child: child);
       },
     ).toList();
