@@ -1,7 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
 import '../utils/colors.dart';
 import '../widgets/form/outlined_text_field.dart';
 import '../widgets/frame/auth_page_frame.dart';

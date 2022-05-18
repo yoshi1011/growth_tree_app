@@ -1,5 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Project imports:
 import '../../models/skill.dart';
 import '../../models/table_items/member_item.dart';
 import '../../models/table_items/mission_item.dart';
@@ -241,7 +243,7 @@ final memberItems = [item, item, item, item, item];
 
 // test data
 final missionItem = MissionItem('チェリー本を読み終える', 15, 10,
-    [Skill(name: 'Ruby', themeColor: Colors.red), Skill(name: 'JavaScript', themeColor: Colors.yellow)]);
+    {});
 
 final missionItems = [
   missionItem,

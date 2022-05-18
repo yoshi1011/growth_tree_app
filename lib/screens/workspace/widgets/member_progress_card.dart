@@ -1,7 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
 import 'package:intl/intl.dart';
 
+// Project imports:
 import '../../../utils/colors.dart';
 import '../../../widgets/avatar/user_avatar.dart';
 import '../../../widgets/chip/unread_chip.dart';

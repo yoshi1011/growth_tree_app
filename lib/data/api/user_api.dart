@@ -1,10 +1,12 @@
+// Package imports:
+import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:retrofit/retrofit.dart';
 
+// Project imports:
 import '../../models/skill.dart';
 import '../../models/user.dart';
 import 'app_dio.dart';
-import 'package:dio/dio.dart';
 
 part 'user_api.g.dart';
 

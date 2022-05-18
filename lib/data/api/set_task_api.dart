@@ -1,8 +1,10 @@
+// Package imports:
+import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:retrofit/retrofit.dart';
 
+// Project imports:
 import 'app_dio.dart';
-import 'package:dio/dio.dart';
 
 part 'set_task_api.g.dart';
 

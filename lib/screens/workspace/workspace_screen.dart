@@ -1,14 +1,17 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'widgets/member_progress_detail_widget.dart';
 
+// Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
 import '../../view_models/curriculum_list_view_model.dart';
-import 'widgets/member_progress_list_widget.dart';
 import '../../widgets/frame/base_frame.dart';
 import '../../widgets/header/header_widget.dart';
 import '../../widgets/notification_bar/notification_bar_widget.dart';
 import '../../widgets/side_menu/side_menu_widget.dart';
+import 'widgets/member_progress_detail_widget.dart';
+import 'widgets/member_progress_list_widget.dart';
 
 class WorkspaceScreen extends ConsumerWidget {
   const WorkspaceScreen({Key? key}) : super(key: key);

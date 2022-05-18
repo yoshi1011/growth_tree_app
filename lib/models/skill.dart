@@ -1,9 +1,13 @@
-import 'package:flutter/material.dart';
+// Flutter imports:
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
+// Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+// Project imports:
 import '../utils/colors.dart';
+import 'user.dart';
 
 part 'skill.freezed.dart';
 part 'skill.g.dart';
@@ -13,6 +17,7 @@ class Skill with _$Skill {
   const factory Skill({
     required String name,
     String? description,
+    required Set<User> users,
     @JsonKey(name: 'color') @ColorConverter() required Color themeColor,
   }) = _Skill;
 
