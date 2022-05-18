@@ -3,7 +3,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../data/repository/mission_repository.dart';
 import '../models/mission.dart';
 import '../models/result.dart';
-import '../models/table_items/mission_item.dart';
 
 final missionListProvider =
     StateNotifierProvider<MissionListViewModel, Result<List<Mission>>?>((ref) {
