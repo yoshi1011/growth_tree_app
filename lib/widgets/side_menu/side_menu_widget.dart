@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
-import '../../providers/user_provider.dart';
+import '../../providers/user_state_provider.dart';
 import '../../utils/utils.dart';
 import 'side_menu_tile.dart';
 
@@ -15,7 +15,7 @@ class SideMenuWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _userStateNotifier = ref.watch(userStateNotifier.notifier);
+    final _userStateProvider = ref.watch(userStateProvider.notifier);
 
     return Drawer(
       child: ListView(
@@ -83,7 +83,7 @@ class SideMenuWidget extends HookConsumerWidget {
             'ログアウト',
             iconData: Icons.logout,
             function: () async {
-              await _userStateNotifier.logout();
+              await _userStateProvider.logout();
               showSnackbar('ログアウトしました', context);
             },
           ),

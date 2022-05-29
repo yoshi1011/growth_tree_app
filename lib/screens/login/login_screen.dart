@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
-import '../../providers/user_provider.dart';
+import '../../providers/user_state_provider.dart';
 import '../../utils/colors.dart';
 import '../../utils/utils.dart';
 import '../../view_models/login_view_model.dart';
@@ -26,7 +26,7 @@ class LoginScreen extends HookConsumerWidget {
     final _isLoading = useState(false);
 
     final _loginViewModel = ref.read(loginViewModelProvider.notifier);
-    final _userStateNotifier = ref.watch(userStateNotifier.notifier);
+    final _userStateProvider = ref.watch(userStateProvider.notifier);
 
     return AuthPageFrame(
       title: 'ログイン',
@@ -120,7 +120,7 @@ class LoginScreen extends HookConsumerWidget {
               await _loginViewModel.login(
                   _emailController.text, _passwordController.text);
               _isLoading.value = false;
-              if (_userStateNotifier.isLoggedIn() == true) {
+              if (_userStateProvider.isLoggedIn() == true) {
                 showSnackbar('ログインしました', context);
               } else {
                 showSnackbar('ログインができませんでした', context);

@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
 import '../models/user.dart';
-import '../providers/user_provider.dart';
+import '../providers/user_state_provider.dart';
 
 final signUpViewModelProvider =
 StateNotifierProvider((ref) => SignUpViewModel(ref.read));
@@ -13,7 +13,7 @@ class SignUpViewModel extends StateNotifier<AsyncValue<User>> {
 
   final Reader _reader;
 
-  late final UserStateNotifier _userStateNotifier = _reader(userStateNotifier.notifier);
+  late final UserStateProvider _userStateProvider = _reader(userStateProvider.notifier);
 
   Future<void> signUp(
       String email,
@@ -31,7 +31,7 @@ class SignUpViewModel extends StateNotifier<AsyncValue<User>> {
       return;
     }
 
-    await _userStateNotifier.signUp(
+    await _userStateProvider.signUp(
       email: email,
       password: password,
       firstName: firstName,

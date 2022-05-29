@@ -8,7 +8,7 @@ import 'package:image_picker/image_picker.dart';
 
 // Project imports:
 import '../../../models/user.dart';
-import '../../../providers/user_provider.dart';
+import '../../../providers/user_state_provider.dart';
 import '../../../utils/colors.dart';
 import '../../../utils/utils.dart';
 import '../../../widgets/button/button.dart';
@@ -21,7 +21,7 @@ class ProfileSetting extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final User? _user = ref.watch(userStateNotifier.notifier).user;
+    final User? _user = ref.watch(userStateProvider.notifier).user;
     
     final _firstNameController = useTextEditingController(text: _user?.firstName);
     final _lastNameController = useTextEditingController(text: _user?.lastName);
@@ -193,7 +193,7 @@ class ProfileSetting extends HookConsumerWidget {
                       labelName: '保存',
                       color: GrowthTreeColors.blue,
                       onPressed: () {
-                        // ref.read(userStateNotifier).
+                        // ref.read(userStateProvider).
                         showSnackbar('プロフィール情報を保存しました', context);
                       },
                     ),

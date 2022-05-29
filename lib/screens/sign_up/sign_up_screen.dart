@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
-import '../../providers/user_provider.dart';
+import '../../providers/user_state_provider.dart';
 import '../../utils/colors.dart';
 import '../../utils/utils.dart';
 import '../../validators/date_validator.dart';
@@ -39,7 +39,7 @@ class SignUpScreen extends HookConsumerWidget {
     final _isLoading = useState(false);
 
     final _signUpViewModel = ref.read(signUpViewModelProvider.notifier);
-    final _userStateNotifier = ref.watch(userStateNotifier.notifier);
+    final _userStateProvider = ref.watch(userStateProvider.notifier);
 
     final _formKey = useMemoized(() => GlobalKey<FormState>());
 
@@ -209,7 +209,7 @@ class SignUpScreen extends HookConsumerWidget {
                     _addressLine2Controller.text,
                   );
                   _isLoading.value = false;
-                  if (_userStateNotifier.isLoggedIn() == true) {
+                  if (_userStateProvider.isLoggedIn() == true) {
                     context.go('/sent_register_mail');
                   } else {
                     showSnackbar('記入事項に漏れがないか確認してください', context);
