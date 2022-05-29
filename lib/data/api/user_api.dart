@@ -24,6 +24,9 @@ abstract class UserApi {
     @Path('userId') num userId,
   );
 
+  @GET('/users/get_current_user')
+  Future<User?> getCurrentUser();
+
   @POST('/users')
   Future<User> create(
     @Body() User user,
@@ -37,6 +40,18 @@ abstract class UserApi {
 
   @PATCH('/users/{userId}/update_role')
   Future<User> updateRole(
+    @Path() num userId,
+    @Body() Map<String, dynamic> body,
+  );
+
+  @PATCH('/users/{userId}/update_login_setting')
+  Future<User> updateLoginSetting(
+    @Path() num userId,
+    @Body() Map<String, dynamic> body,
+  );
+
+  @PATCH('/users/{userId}/update_profile_setting')
+  Future<User> updateProfileSetting(
     @Path() num userId,
     @Body() Map<String, dynamic> body,
   );

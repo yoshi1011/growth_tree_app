@@ -6,6 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
+import '../../../models/user.dart';
 import '../../../utils/colors.dart';
 import '../../../utils/utils.dart';
 import '../../../widgets/button/button.dart';
@@ -13,7 +14,9 @@ import '../../../widgets/form/outlined_text_field.dart';
 import '../../../widgets/text/l_text.dart';
 
 class LoginSetting extends HookConsumerWidget {
-  const LoginSetting({Key? key}) : super(key: key);
+  const LoginSetting({Key? key, required this.user}) : super(key: key);
+
+  final User? user;
 
   void _saveLoginSetting(context) {
     showSnackbar('ログイン情報を保存しました', context);
@@ -21,7 +24,7 @@ class LoginSetting extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _emailController = useTextEditingController();
+    final _emailController = useTextEditingController(text: user?.email);
     final _passwordController = useTextEditingController();
     final _passwordConfirmController = useTextEditingController();
 
@@ -30,7 +33,7 @@ class LoginSetting extends HookConsumerWidget {
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
       decoration: BoxDecoration(
         border: Border.all(
-            color: GrowthTreeColors.darkGray,
+            color: GrowthTreeColors.lightGray,
             width: 1,
             style: BorderStyle.solid),
         borderRadius: BorderRadius.circular(5),
@@ -38,7 +41,7 @@ class LoginSetting extends HookConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          LText(
+          const LText(
             'ログイン情報',
             fontColor: GrowthTreeColors.black,
           ),
@@ -89,19 +92,19 @@ class LoginSetting extends HookConsumerWidget {
                       ),
                     ],
                   ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Container(
+                    alignment: Alignment.bottomRight,
+                    child: BasicButton(
+                      labelName: '保存',
+                      color: GrowthTreeColors.blue,
+                      onPressed: () => _saveLoginSetting(context),
+                    ),
+                  ),
                 ],
               ),
-            ),
-          ),
-          const SizedBox(
-            height: 40,
-          ),
-          Container(
-            alignment: Alignment.bottomRight,
-            child: BasicButton(
-              labelName: '保存',
-              color: GrowthTreeColors.blue,
-              onPressed: () => _saveLoginSetting(context),
             ),
           ),
         ],

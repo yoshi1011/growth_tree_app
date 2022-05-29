@@ -1,6 +1,3 @@
-// Dart imports:
-import 'dart:html';
-
 // Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -21,9 +18,6 @@ class AuthRepository {
   Future<Result<User?>> validateToken() async {
     return Result.recieveFuture(() async => await _api.validateToken());
   }
-  // Future<AsyncValue<User?>> validateToken() async {
-  //   return AsyncValue.guard(() async => await _api.validateToken());
-  // }
 
   Future<Result<User>> login({required String email, required String password}) async {
     Map<String, dynamic> body = {'email': email, 'password': password};

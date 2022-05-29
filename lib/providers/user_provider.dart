@@ -20,6 +20,8 @@ class UserStateNotifier extends StateNotifier<UserState> {
 
   late final AuthRepository _repository = _reader(authRepositoryProvider);
 
+  User? get user => state.user;
+
   Future<void> login({required String email, required String password}) async {
     return _repository.login(email: email, password: password).then(
       (result) {
