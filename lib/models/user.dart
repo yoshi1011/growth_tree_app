@@ -13,6 +13,7 @@ part 'user.g.dart';
 @freezed
 class User with _$User {
   const factory User({
+    required num id,
     String? accessToken,
     required String email,
     required String firstName,

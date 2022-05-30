@@ -21,9 +21,13 @@ class UserRepository {
     );
   }
 
-  Future<Result<User?>> getCurrentUser() async {
+  Future<Result<User>> updateImage(
+      {required num userId, required String imageUrl}) async {
+    Map<String, dynamic> body = {
+      'image_url': imageUrl,
+    };
     return Result.recieveFuture(
-      () async => await _api.getCurrentUser(),
+      () async => await _api.updateImage(userId, body),
     );
   }
 

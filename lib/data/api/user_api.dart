@@ -24,9 +24,6 @@ abstract class UserApi {
     @Path('userId') num userId,
   );
 
-  @GET('/users/get_current_user')
-  Future<User?> getCurrentUser();
-
   @POST('/users')
   Future<User> create(
     @Body() User user,
@@ -34,6 +31,12 @@ abstract class UserApi {
 
   @PATCH('/users/{userId}')
   Future<User> update(
+    @Path() num userId,
+    @Body() Map<String, dynamic> body,
+  );
+
+  @PATCH('/users/{userId}/update_image')
+  Future<User> updateImage(
     @Path() num userId,
     @Body() Map<String, dynamic> body,
   );

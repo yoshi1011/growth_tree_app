@@ -1,4 +1,6 @@
 // Flutter imports:
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -69,6 +71,9 @@ class ProfileSetting extends HookConsumerWidget {
                       onTap: () async {
                         final XFile? uploadedImage = await _picker
                             .pickImage(source: ImageSource.gallery);
+                        final byteImage = await uploadedImage!.readAsBytes();
+                        final byte = base64Encode(byteImage);
+                        await ref.read(userStateProvider.notifier).updateImage(byte);
                       },
                     ),
                   ),
