@@ -3,25 +3,49 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
 import '../data/repository/auth_repository.dart';
+import '../data/repository/user_repository.dart';
 import '../models/result.dart';
 import '../models/user.dart';
-import 'user_state.dart';
 
-final userStateNotifier =
-    StateNotifierProvider<UserStateNotifier, UserState>((ref) {
-  return UserStateNotifier(ref.read);
+final userStateProvider =
+    StateNotifierProvider<UserStateProvider, User?>((ref) {
+  return UserStateProvider(ref.read);
 });
 
 // 全ページに跨ってログイン状態を保持するためのNotifier
-class UserStateNotifier extends StateNotifier<UserState> {
-  UserStateNotifier(this._reader) : super(UserState());
+class UserStateProvider extends StateNotifier<User?> {
+  UserStateProvider(this._reader) : super(null);
 
   final Reader _reader;
 
-  late final AuthRepository _repository = _reader(authRepositoryProvider);
+  late final AuthRepository _authRepository = _reader(authRepositoryProvider);
+  late final UserRepository _userRepository = _reader(userRepositoryProvider);
+
+  User? get user => state;
+
+  void setUser(User user) {
+    state = user;
+  }
+
+  void removeUser() {
+    state = null;
+  }
+
+  bool isLoggedIn() {
+    return state != null;
+  }
+
+  Future<void> initLoad() async {
+    Result<User?> result = await _authRepository.validateToken();
+    result.when(success: (user) {
+      state = user;
+    }, error: (_) {
+      state = null;
+    });
+  }
 
   Future<void> login({required String email, required String password}) async {
-    return _repository.login(email: email, password: password).then(
+    return _authRepository.login(email: email, password: password).then(
       (result) {
         result.ifSuccess(
           (data) {
@@ -45,7 +69,7 @@ class UserStateNotifier extends StateNotifier<UserState> {
     required String addressLine1,
     String? addressLine2,
   }) async {
-    return _repository.signUp(
+    return _authRepository.signUp(
       email: email,
       password: password,
       firstName: firstName,
@@ -69,7 +93,7 @@ class UserStateNotifier extends StateNotifier<UserState> {
   }
 
   Future<void> logout() async {
-    return _repository.logout().then(
+    return _authRepository.logout().then(
       (result) {
         return result.when(
           success: (_) {
@@ -81,24 +105,20 @@ class UserStateNotifier extends StateNotifier<UserState> {
     );
   }
 
-  void setUser(User user) {
-    state = state.copyWith(user: user);
-  }
-
-  void removeUser() {
-    state = state.copyWith(user: null);
-  }
-
-  bool isLoggedIn() {
-    return state.user != null;
-  }
-
-  Future<void> initLoad() async {
-    Result<User?> result = await _repository.validateToken();
-    result.when(success: (user) {
-      state = state.copyWith(user: user);
-    }, error: (_) {
-      state = state.copyWith(user: null);
-    });
+  Future<void> updateImage(String imageUrl) async {
+    await _userRepository
+        .updateImage(userId: user!.id, imageUrl: imageUrl)
+        .then(
+      (result) {
+        result.when(
+          success: (user) {
+            state = state!.copyWith(imageUrl: user.imageUrl);
+          },
+          error: (err) {
+            print(err);
+          },
+        );
+      },
+    );
   }
 }

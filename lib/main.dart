@@ -7,7 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
 import 'providers/router_provider.dart';
-import 'providers/user_provider.dart';
+import 'providers/user_state_provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,11 +19,11 @@ class MyApp extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _userStateNotifier = ref.read(userStateNotifier.notifier);
+    final _userStateProvider = ref.read(userStateProvider.notifier);
     // GoRouterが動く前にUserStateを初期化する
     final snapshot = useFuture(useMemoized(
         () async {
-          return await _userStateNotifier.initLoad();
+          return await _userStateProvider.initLoad();
         }
     ));
     switch (snapshot.connectionState) {

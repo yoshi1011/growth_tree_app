@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
 import '../models/user.dart';
-import '../providers/user_provider.dart';
+import '../providers/user_state_provider.dart';
 
 final loginViewModelProvider =
     StateNotifierProvider((ref) => LoginViewModel(ref.read));
@@ -13,13 +13,13 @@ class LoginViewModel extends StateNotifier<AsyncValue<User>> {
 
   final Reader _reader;
 
-  late final UserStateNotifier _userStateNotifier = _reader(userStateNotifier.notifier);
+  late final UserStateProvider _userStateProvider = _reader(userStateProvider.notifier);
 
   Future<void> login(email, password) async {
     if (email.isEmpty & password.isEmpty) {
       return;
     }
 
-    await _userStateNotifier.login(email: email, password: password);
+    await _userStateProvider.login(email: email, password: password);
   }
 }

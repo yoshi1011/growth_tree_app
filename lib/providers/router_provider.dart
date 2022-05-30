@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
+import '../models/user.dart';
 import '../screens/account/account_screen.dart';
 import '../screens/curriculums/curriculum_detail_screen.dart';
 import '../screens/curriculums/curriculums_screen.dart';
@@ -18,8 +19,7 @@ import '../screens/sign_up/sign_up_screen.dart';
 import '../screens/skills/skills_screen.dart';
 import '../screens/unknown_screen.dart';
 import '../screens/workspace/workspace_screen.dart';
-import 'user_provider.dart';
-import 'user_state.dart';
+import 'user_state_provider.dart';
 
 const loggedInPaths = [
   '/',
@@ -41,8 +41,8 @@ final routerProvider = Provider<GoRouter>((ref) {
     debugLogDiagnostics: true,
     redirect: (state) {
       // TODO: ログイン状態をCookieから確認する方法を実装して再度書き直す
-      final _userStateNotifier = ref.watch(userStateNotifier.notifier);
-      final isLoggedIn = _userStateNotifier.isLoggedIn();
+      final _userStateProvider = ref.watch(userStateProvider.notifier);
+      final isLoggedIn = _userStateProvider.isLoggedIn();
       final goToLoggedInPages = loggedInPaths.contains(state.subloc);
       final goToLoggedOutPages = loggedOutPaths.contains(state.subloc);
 
@@ -97,6 +97,6 @@ class RouterNotifier extends ChangeNotifier {
   final Ref _ref;
 
   RouterNotifier(this._ref) {
-    _ref.listen<UserState>(userStateNotifier, (_, __) => notifyListeners());
+    _ref.listen<User?>(userStateProvider, (_, __) => notifyListeners());
   }
 }

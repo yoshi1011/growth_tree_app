@@ -190,6 +190,7 @@ class WorkspaceDialog extends HookConsumerWidget {
 // test data
 
 final testUser = User(
+  id: 1,
   email: "admin@example.com",
   firstName: "山田",
   lastName: "太郎",
