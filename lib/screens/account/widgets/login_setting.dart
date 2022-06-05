@@ -7,26 +7,25 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
 import '../../../models/user.dart';
+import '../../../providers/user_state_provider.dart';
 import '../../../utils/colors.dart';
 import '../../../utils/utils.dart';
+import '../../../validators/required_validator.dart';
 import '../../../widgets/button/button.dart';
 import '../../../widgets/form/outlined_text_field.dart';
 import '../../../widgets/text/l_text.dart';
 
 class LoginSetting extends HookConsumerWidget {
-  const LoginSetting({Key? key, required this.user}) : super(key: key);
-
-  final User? user;
-
-  void _saveLoginSetting(context) {
-    showSnackbar('ログイン情報を保存しました', context);
-  }
+  const LoginSetting({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _emailController = useTextEditingController(text: user?.email);
-    final _passwordController = useTextEditingController();
-    final _passwordConfirmController = useTextEditingController();
+    final User? _user = ref.watch(userStateProvider.notifier).user;
+
+    final _emailController = useTextEditingController(text: _user?.email);
+    final _currentPasswordController = useTextEditingController();
+    final _newPasswordController = useTextEditingController();
+    final _passwordConfirmationController = useTextEditingController();
 
     return Container(
       width: 864,
@@ -67,13 +66,29 @@ class LoginSetting extends HookConsumerWidget {
                   ),
                   const SizedBox(height: 25),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 340,
+                        child: OutlinedTextField(
+                          controller: _currentPasswordController,
+                          labelText: '現在のパスワード',
+                          textInputType: TextInputType.text,
+                          isPass: true,
+                          validator: RequiredValidator.validate,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 25),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
                         width: 340,
                         child: OutlinedTextField(
-                          controller: _passwordController,
-                          labelText: 'パスワード',
+                          controller: _newPasswordController,
+                          labelText: '新しいパスワード',
                           textInputType: TextInputType.text,
                           isPass: true,
                         ),
@@ -84,8 +99,8 @@ class LoginSetting extends HookConsumerWidget {
                       Container(
                         width: 340,
                         child: OutlinedTextField(
-                          controller: _passwordConfirmController,
-                          labelText: 'パスワード(繰り返し)',
+                          controller: _passwordConfirmationController,
+                          labelText: '新しいパスワード(繰り返し)',
                           textInputType: TextInputType.text,
                           isPass: true,
                         ),
@@ -100,7 +115,16 @@ class LoginSetting extends HookConsumerWidget {
                     child: BasicButton(
                       labelName: '保存',
                       color: GrowthTreeColors.blue,
-                      onPressed: () => _saveLoginSetting(context),
+                      onPressed: () async {
+                        await ref.read(userStateProvider.notifier)
+                            .updateLoginSetting(
+                              email: _emailController.text,
+                              currentPassword: _currentPasswordController.text,
+                              password: _newPasswordController.text,
+                              passwordConfirmation: _passwordConfirmationController.text,
+                            );
+                        showSnackbar('ログイン情報を保存しました', context);
+                      },
                     ),
                   ),
                 ],

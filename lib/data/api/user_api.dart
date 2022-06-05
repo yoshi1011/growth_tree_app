@@ -47,9 +47,8 @@ abstract class UserApi {
     @Body() Map<String, dynamic> body,
   );
 
-  @PATCH('/users/{userId}/update_login_setting')
+  @PATCH('/update_login_setting')
   Future<User> updateLoginSetting(
-    @Path() num userId,
     @Body() Map<String, dynamic> body,
   );
 
