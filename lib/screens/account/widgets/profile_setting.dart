@@ -148,7 +148,6 @@ class ProfileSetting extends HookConsumerWidget {
                       onPressed: () async {
                         await ref.read(userStateProvider.notifier)
                             .updateProfileSetting(
-                              userId: _user!.id,
                               firstName: _firstNameController.text,
                               lastName: _lastNameController.text,
                               birthday: _birthdayController.text,

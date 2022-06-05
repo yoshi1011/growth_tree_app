@@ -35,26 +35,23 @@ abstract class UserApi {
     @Body() Map<String, dynamic> body,
   );
 
-  @PATCH('/users/{userId}/update_image')
+  @PATCH('/users/update_image')
   Future<User> updateImage(
-    @Path() num userId,
     @Body() Map<String, dynamic> body,
   );
 
-  @PATCH('/users/{userId}/update_role')
+  @PATCH('/users/update_role')
   Future<User> updateRole(
-    @Path() num userId,
     @Body() Map<String, dynamic> body,
   );
 
-  @PATCH('/update_login_setting')
+  @PATCH('/users/update_login_setting')
   Future<User> updateLoginSetting(
     @Body() Map<String, dynamic> body,
   );
 
-  @PATCH('/users/{userId}/update_profile_setting')
+  @PATCH('/users/update_profile_setting')
   Future<User> updateProfileSetting(
-    @Path() num userId,
     @Body() Map<String, dynamic> body,
   );
 

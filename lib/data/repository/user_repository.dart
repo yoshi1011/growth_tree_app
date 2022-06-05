@@ -22,12 +22,12 @@ class UserRepository {
   }
 
   Future<Result<User>> updateImage(
-      {required num userId, required String imageUrl}) async {
+      {required String imageUrl}) async {
     Map<String, dynamic> body = {
       'image_url': imageUrl,
     };
     return Result.recieveFuture(
-      () async => await _api.updateImage(userId, body),
+      () async => await _api.updateImage(body),
     );
   }
 
@@ -49,8 +49,7 @@ class UserRepository {
   }
 
   Future<Result<User>> updateProfileSetting(
-      {required num userId,
-      required String firstName,
+      {required String firstName,
       required String lastName,
       required DateTime birthday,
       DateTime? joinedDate}) async {
@@ -70,7 +69,7 @@ class UserRepository {
       }
     };
     return Result.recieveFuture(
-      () async => await _api.updateProfileSetting(userId, body),
+      () async => await _api.updateProfileSetting(body),
     );
   }
 }

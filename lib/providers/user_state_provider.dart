@@ -107,7 +107,7 @@ class UserStateProvider extends StateNotifier<User?> {
 
   Future<void> updateImage({required String imageUrl}) async {
     await _userRepository
-        .updateImage(userId: user!.id, imageUrl: imageUrl)
+        .updateImage(imageUrl: imageUrl)
         .then(
       (result) {
         result.when(
@@ -137,14 +137,12 @@ class UserStateProvider extends StateNotifier<User?> {
   }
 
   Future<void> updateProfileSetting({
-    required num userId,
     required String firstName,
     required String lastName,
     required String birthday,
     String? joinedDate,
   }) async {
     await _userRepository.updateProfileSetting(
-      userId: userId,
       firstName: firstName,
       lastName: lastName,
       birthday: DateTime.parse(birthday),
