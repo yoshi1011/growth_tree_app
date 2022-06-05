@@ -8,11 +8,11 @@ class BaseFrame extends StatelessWidget {
   final String title;
   final Widget contentWidget;
 
-  const BaseFrame({Key? key,
+  const BaseFrame({
+    Key? key,
     required this.title,
     required this.contentWidget,
-  })
-      : super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,10 @@ class BaseFrame extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            contentWidget
+            contentWidget,
+            const SizedBox(
+              height: 50,
+            ),
           ],
         ),
       ),

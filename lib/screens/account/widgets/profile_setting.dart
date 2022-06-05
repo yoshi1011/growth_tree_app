@@ -13,6 +13,8 @@ import '../../../models/user.dart';
 import '../../../providers/user_state_provider.dart';
 import '../../../utils/colors.dart';
 import '../../../utils/utils.dart';
+import '../../../validators/date_validator.dart';
+import '../../../validators/required_validator.dart';
 import '../../../widgets/button/button.dart';
 import '../../../widgets/form/outlined_text_field.dart';
 import '../../../widgets/text/l_text.dart';
@@ -27,12 +29,8 @@ class ProfileSetting extends HookConsumerWidget {
     
     final _firstNameController = useTextEditingController(text: _user?.firstName);
     final _lastNameController = useTextEditingController(text: _user?.lastName);
-    final _birthYearConfirmController = useTextEditingController(text: _user?.birthday.year.toString());
-    final _birthMonthConfirmController = useTextEditingController(text: _user?.birthday.month.toString());
-    final _birthDayConfirmController = useTextEditingController(text: _user?.birthday.day.toString());
-    final _joinedYearConfirmController = useTextEditingController(text: _user?.joinedDate?.year.toString());
-    final _joinedMonthConfirmController = useTextEditingController(text: _user?.joinedDate?.month.toString());
-    final _joinedDayConfirmController = useTextEditingController(text: _user?.joinedDate?.day.toString());
+    final _birthdayController = useTextEditingController(text: _user?.birthdayText);
+    final _joinedDateController = useTextEditingController(text: _user?.joinedDateText);
 
     final imageUrl = _user?.imageUrl;
 
@@ -72,8 +70,8 @@ class ProfileSetting extends HookConsumerWidget {
                         final XFile? uploadedImage = await _picker
                             .pickImage(source: ImageSource.gallery);
                         final byteImage = await uploadedImage!.readAsBytes();
-                        final byte = base64Encode(byteImage);
-                        await ref.read(userStateProvider.notifier).updateImage(byte);
+                        final base64Image = base64Encode(byteImage);
+                        await ref.read(userStateProvider.notifier).updateImage(imageUrl: base64Image);
                       },
                     ),
                   ),
@@ -94,6 +92,7 @@ class ProfileSetting extends HookConsumerWidget {
                           controller: _firstNameController,
                           labelText: 'FirstName',
                           textInputType: TextInputType.text,
+                          validator: RequiredValidator.validate,
                         ),
                       ),
                       const SizedBox(
@@ -105,6 +104,7 @@ class ProfileSetting extends HookConsumerWidget {
                           controller: _lastNameController,
                           labelText: 'LastName',
                           textInputType: TextInputType.text,
+                          validator: RequiredValidator.validate,
                         ),
                       ),
                     ],
@@ -114,80 +114,28 @@ class ProfileSetting extends HookConsumerWidget {
                   ),
                   const SText('生年月日', fontWeight: FontWeight.normal,),
                   const SizedBox(height: 10,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 150,
-                        child: OutlinedTextField(
-                          controller: _birthYearConfirmController,
-                          labelText: '年',
-                          textInputType: TextInputType.text,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 25,
-                      ),
-                      Container(
-                        width: 90,
-                        child: OutlinedTextField(
-                          controller: _birthMonthConfirmController,
-                          labelText: '月',
-                          textInputType: TextInputType.text,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 25,
-                      ),
-                      Container(
-                        width: 90,
-                        child: OutlinedTextField(
-                          controller: _birthDayConfirmController,
-                          labelText: '日',
-                          textInputType: TextInputType.text,
-                        ),
-                      ),
-                    ],
+                  Container(
+                    width: 150,
+                    child: OutlinedTextField(
+                      controller: _birthdayController,
+                      labelText: '年',
+                      textInputType: const TextInputType.numberWithOptions(signed: false, decimal: false),
+                      validator: DateValidator.validate,
+                    ),
                   ),
                   const SizedBox(
                     height: 25,
                   ),
                   const SText('入社日', fontWeight: FontWeight.normal,),
                   const SizedBox(height: 10,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 150,
-                        child: OutlinedTextField(
-                          controller: _joinedYearConfirmController,
-                          labelText: '年',
-                          textInputType: TextInputType.text,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 25,
-                      ),
-                      Container(
-                        width: 90,
-                        child: OutlinedTextField(
-                          controller: _joinedMonthConfirmController,
-                          labelText: '月',
-                          textInputType: TextInputType.text,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 25,
-                      ),
-                      Container(
-                        width: 90,
-                        child: OutlinedTextField(
-                          controller: _joinedDayConfirmController,
-                          labelText: '日',
-                          textInputType: TextInputType.text,
-                        ),
-                      ),
-                    ],
+                  Container(
+                    width: 150,
+                    child: OutlinedTextField(
+                      controller: _joinedDateController,
+                      labelText: '年',
+                      textInputType: const TextInputType.numberWithOptions(signed: false, decimal: false),
+                      validator: DateValidator.validate,
+                    ),
                   ),
                   const SizedBox(
                     height: 40,
@@ -197,8 +145,14 @@ class ProfileSetting extends HookConsumerWidget {
                     child: BasicButton(
                       labelName: '保存',
                       color: GrowthTreeColors.blue,
-                      onPressed: () {
-                        // ref.read(userStateProvider).
+                      onPressed: () async {
+                        await ref.read(userStateProvider.notifier)
+                            .updateProfileSetting(
+                              firstName: _firstNameController.text,
+                              lastName: _lastNameController.text,
+                              birthday: _birthdayController.text,
+                              joinedDate: _joinedDateController.text,
+                            );
                         showSnackbar('プロフィール情報を保存しました', context);
                       },
                     ),

@@ -12,6 +12,8 @@ part 'user.g.dart';
 
 @freezed
 class User with _$User {
+  const User._();
+
   const factory User({
     required num id,
     String? accessToken,
@@ -25,4 +27,14 @@ class User with _$User {
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
+  String get birthdayText =>
+      '${birthday.year}-${birthday.month.toString().padLeft(2, "0")}-${birthday.day.toString().padLeft(2, "0")}';
+
+  String? get joinedDateText {
+    if (joinedDate != null) {
+      return '${joinedDate?.year}-${joinedDate?.month.toString().padLeft(2, "0")}-${joinedDate?.day.toString().padLeft(2, "0")}';
+    }
+    return null;
+  }
 }

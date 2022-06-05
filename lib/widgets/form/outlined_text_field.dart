@@ -8,6 +8,7 @@ import '../../utils/colors.dart';
 class OutlinedTextField extends StatelessWidget {
   final TextEditingController controller;
   final String labelText;
+  // Flutter Webにおいては効果が出る場面がなさそうだが、アプリ版への流用を想定して付与しておく
   final TextInputType textInputType;
   final bool isPass;
   final FormFieldValidator? validator;

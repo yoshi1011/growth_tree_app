@@ -29,7 +29,7 @@ class AccountScreen extends ConsumerWidget {
           title: 'アカウント',
           contentWidget: Column(
             children: [
-              LoginSetting(user: _user,),
+              LoginSetting(),
               const SizedBox(height: 45,),
               ProfileSetting(),
             ],

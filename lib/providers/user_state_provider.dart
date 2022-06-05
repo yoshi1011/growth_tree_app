@@ -105,9 +105,9 @@ class UserStateProvider extends StateNotifier<User?> {
     );
   }
 
-  Future<void> updateImage(String imageUrl) async {
+  Future<void> updateImage({required String imageUrl}) async {
     await _userRepository
-        .updateImage(userId: user!.id, imageUrl: imageUrl)
+        .updateImage(imageUrl: imageUrl)
         .then(
       (result) {
         result.when(
@@ -120,5 +120,39 @@ class UserStateProvider extends StateNotifier<User?> {
         );
       },
     );
+  }
+
+  Future<void> updateLoginSetting({
+    required String email,
+    required String currentPassword,
+    required String password,
+    required String passwordConfirmation,
+  }) async {
+    await _userRepository.updateLoginSetting(
+      email: email,
+      currentPassword: currentPassword,
+      password: password,
+      passwordConfirmation: passwordConfirmation,
+    );
+  }
+
+  Future<void> updateProfileSetting({
+    required String firstName,
+    required String lastName,
+    required String birthday,
+    String? joinedDate,
+  }) async {
+    await _userRepository.updateProfileSetting(
+      firstName: firstName,
+      lastName: lastName,
+      birthday: DateTime.parse(birthday),
+      joinedDate: joinedDate != null ? DateTime.parse(joinedDate) : null,
+    ).then((result) {
+      result.when(success: (user) {
+        state = user;
+      }, error: (err) {
+        print(err);
+      });
+    });
   }
 }
