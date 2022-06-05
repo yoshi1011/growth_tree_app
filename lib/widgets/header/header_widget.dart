@@ -8,6 +8,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 // Project imports:
 import 'package:growth_tree_app/utils/colors.dart';
 
+import '../../models/user.dart';
+import '../../providers/user_state_provider.dart';
+
 class HeaderWidget extends StatefulHookConsumerWidget
     implements PreferredSizeWidget {
   const HeaderWidget({Key? key}) : super(key: key);
@@ -30,6 +33,9 @@ class HeaderWidgetState extends ConsumerState<HeaderWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final User? _user = ref.watch(userStateProvider.notifier).user;
+    final imageUrl = _user?.imageUrl;
+
     return AppBar(
       backgroundColor: Colors.white,
       leading: IconButton(
@@ -52,13 +58,14 @@ class HeaderWidgetState extends ConsumerState<HeaderWidget> {
           ),
           onPressed: _handleEndDrawerButton,
         ),
-        SizedBox(
+        const SizedBox(
           width: 15,
         ),
         CircleAvatar(
+          backgroundImage: imageUrl != null ? NetworkImage(imageUrl) : null,
           backgroundColor: Colors.black54,
         ),
-        SizedBox(
+        const SizedBox(
           width: 20,
         ),
       ],
